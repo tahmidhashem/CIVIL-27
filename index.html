@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CIVIL-27 | Elite Civil Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      /* Stroke-only civil engineering background */
+      background: linear-gradient(135deg, rgba(10, 25, 47, 0.85), rgba(44, 62, 80, 0.85)), 
+                  url('https://www.transparenttextures.com/patterns/blueprint.png') repeat center center fixed;
+      background-size: auto;
+      font-family: 'Quicksand', 'Georgia', 'Times New Roman', Times, serif;
+      color: #f5f6f5;
+    }
+
+    h1 {
+      color: #d4a017;
+      text-align: center;
+      font-family: 'Montserrat', Georgia, serif;
+      font-size: 3em;
+      font-weight: 800;
+      letter-spacing: 5px;
+      margin-top: 40px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      text-transform: uppercase;
+    }
+
+    #logo-container {
+      text-align: center;
+      margin: 15px 0 20px 0;
+    }
+    #logo-container img {
+      max-width: 320px;
+      width: 90%;
+      height: auto;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+      padding: 0;
+      margin-bottom: 0;
+      transition: transform 0.3s;
+    }
+    #logo-container img:hover {
+      transform: scale(1.05);
+    }
+
+    #link-container {
+      text-align: center;
+      margin: 20px 0 15px 0;
+      animation: pop 1.2s ease-out;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    #website-link {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #0a192f;
+      background: linear-gradient(90deg, #d4a017, #f5c769);
+      border: 4px solid #f5c769;
+      border-radius: 20px;
+      box-shadow: 0 6px 30px rgba(212, 160, 23, 0.4), 0 2px 0 rgba(255, 255, 255, 0.2) inset;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    #website-link:hover {
+      box-shadow: 0 10px 40px rgba(212, 160, 23, 0.6), 0 3px 0 rgba(255, 255, 255, 0.3) inset;
+      background: linear-gradient(90deg, #f5c769, #d4a017);
+      transform: translateY(-2px);
+    }
+
+    #searchBar {
+      display: block;
+      margin: 30px auto 28px auto;
+      padding: 16px 24px;
+      font-size: 1.2em;
+      width: 65%;
+      max-width: 450px;
+      border-radius: 40px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f5f6f5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    #searchBar:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: 2px solid #d4a017;
+      box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
+    }
+    #searchBar::placeholder {
+      color: #b2bec3;
+    }
+
+    .mine {
+      display: flex;
+      justify-content: center;
+      margin: 15px auto 50px auto;
+      max-width: 900px;
+    }
+
+    .name-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      padding: 30px 28px 20px 28px;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #f5f6f5;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(212, 160, 23, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      backdrop-filter: blur(5px);
+    }
+    .name-box:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(212, 160, 23, 0.5), 0 2px 0 rgba(255, 255, 255, 0.2) inset;
+      border-color: #d4a017;
+    }
+
+    .name {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 80%, rgba(212, 160, 23, 0.2) 100%);
+      color: #d4a017;
+      border-radius: 15px;
+      padding: 8px 18px;
+      margin-bottom: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      letter-spacing: 0.8px;
+      box-shadow: 0 1px 5px rgba(212, 160, 23, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    .name:hover {
+      background: linear-gradient(90deg, rgba(212, 160, 23, 0.3), rgba(245, 199, 105, 0.4));
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(212, 160, 23, 0.5);
+      font-size: 1.1em;
+      letter-spacing: 1.2px;
+      transform: scale(1.02);
+    }
+
+    .name img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-right: 14px;
+      object-fit: cover;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s;
+    }
+    .name img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Side Panel Styles */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: rgba(10, 25, 47, 0.95);
+      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
+      transition: right 0.4s ease-in-out;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px;
+      overflow-y: auto;
+      backdrop-filter: blur(8px);
+    }
+    .side-panel.active {
+      right: 0;
+    }
+    .side-panel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 25px;
+      transition: transform 0.3s;
+    }
+    .side-panel img:hover {
+      transform: scale(1.03);
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #d4a017;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      font-size: 1.4em;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s;
+    }
+    .close-btn:hover {
+      background: #f5c769;
+      transform: rotate(90deg);
+    }
+    .panel-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4em;
+      font-weight: 700;
+      color: #d4a017;
+      margin-bottom: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .mine { max-width: 99vw; }
+      .name-box { padding: 25px 6vw 20px 6vw; }
+      #logo-container img { max-width: 95vw; }
+      .side-panel { width: 80vw; }
+    }
+    @media (max-width: 700px) {
+      .mine { flex-direction: column; align-items: center; }
+      .name-box { width: 95%; min-height: unset; }
+      #searchBar { width: 90%; font-size: 1.1em; }
+      .name img { width: 38px; height: 38px; }
+      .side-panel { width: 100vw; }
+      h1 { font-size: 2.2em; }
+    }
+  </style>
+</head>
+<body>
+  <h1>CIVIL-27</h1>
+  <div id="logo-container">
+    <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/IMG-20250603-WA0150(1).jpg" alt="CIVIL-27 Logo">
+  </div>
+  <div id="link-container">
+    <a id="website-link" href="https://mist.ac.bd/department/ce" target="_blank">Visit CE Department</a>
+  </div>
+  <input type="text" id="searchBar" onkeyup="searchNames()" placeholder="Search for a name...">
+
+  <!-- Side Panel -->
+  <div id="sidePanel" class="side-panel">
+    <button class="close-btn" onclick="closePanel()">×</button>
+    <div class="panel-name" id="panelName"></div>
+    <img id="panelImage" src="" alt="Selected Person">
+  </div>
+
+  <div class="mine">
+    <div class="name-box">
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Sania Mirza" loading="lazy">SANIA MIRZA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Turjaun Khan Turjo" loading="lazy">MD.TURJAUN KHAN TURJO</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Saim Khan" loading="lazy">MD.SAIM KHAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Moumita Das" loading="lazy">MOUMITA DAS</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Rimjhim Saha" loading="lazy">RIMJHIM SAHA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Anisha Anower" loading="lazy">ANISHA ANOWER</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Akida Adnin" loading="lazy">AKIDA ADNIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Jinat Rahman" loading="lazy">JINAT RAHMAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Maria Islam Soha" loading="lazy">MARIA ISLAM SOHA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Tanmoy Dakua" loading="lazy">TANMOY DAKUA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Farnaz Rahman Maliha" loading="lazy">FARNAZ RAHMAN MALIHA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Adib Masrur Khan" loading="lazy">ADIB MASRUR KHAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Shah Ahmed Rupam" loading="lazy">SHAH AHMED RUPAM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Labeed Lohani Khan" loading="lazy">LABEED LOHANI KHAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Abdullah Al Fahat Bhuiya" loading="lazy">ABDULLAH AL FAHAT BHUIYA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Mantasha Murshid" loading="lazy">MANTASHA MURSHID</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TASFIA TABASSUM" loading="lazy">TASFIA TABASSUM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Nazifa Zamal Diya" loading="lazy">NAZIFA ZAMAL DIYA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Ashfak Zaman" loading="lazy">ASHFAK ZAMAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" alt="Tahmid Ibne Hashem" loading="lazy">TAHMID IBNE HASHEM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Mufidul Islam" loading="lazy">MD.MUFIDUL ISLAM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Marufa Islam Suchona" loading="lazy">MARUFA ISLAM SUCHONA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Shakib Al Hasan" loading="lazy">SHAKIB AL HASAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Sabbir Uddin" loading="lazy">MD.SABBIR UDDIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Mahdi Faiyaz Farazi" loading="lazy">MAHDI FAIYAZ FARAZI</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Alif Hossain" loading="lazy">MD.ALIF HOSSAIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="K.M Zahinur Rahman" loading="lazy">K.M ZAHINUR RAHMAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Hasnain Ahmed Soumic" loading="lazy">HASNAIN AHMED SOUMIC</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Fahmid Hossain" loading="lazy">FAHMID HOSSAIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Ramis Johra Ishra" loading="lazy">RAMIS JOHRA ISHRA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Zehad Al Saba" loading="lazy">MD.ZEHAD AL SABA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Saidul Islam Giam" loading="lazy">MD.SAIDUL ISLAM GIAM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Nafis Mahmud" loading="lazy">NAFIS MAHMUD</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Emad Uddin Emu" loading="lazy">MD.EMAD UDDIN EMU</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Takbir Hossain" loading="lazy">MD.TAKBIR HOSSAIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Mst.Tasfia Fairus" loading="lazy">MST.TASFIA FAIRUS</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Ishrat Jahan Raisa" loading="lazy">ISHRAT JAHAN RAISA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Ashraful Islam Sohan" loading="lazy">MD.ASHRAFUL ISLAM SOHAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Riaduzzaman Molla" loading="lazy">MD.RIADUZZAMAN MOLLA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Sayeed Hossain Shihab" loading="lazy">MD.SAYEED HOSSAIN SHIHAB</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Toqi Tahmid Rayat" loading="lazy">MD.TOQI TAHMID RAYAT</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Afrin Jahan Nadia" loading="lazy">AFRIN JAHAN NADIA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Suborna Rani Roy" loading="lazy">SUBORNA RANI ROY</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Zakiul Islam Al Jami" loading="lazy">MD.ZAKIUL ISLAM AL JAMI</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Ireena Ashraf" loading="lazy">IREENA ASHRAF</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Rubayet Hossain Riham" loading="lazy">MD.RUBAYET HOSSAIN RIHAM</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Sadia Israt Soborna" loading="lazy">SADIA ISRAT SOBORNA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Khandakar Mehedin" loading="lazy">KHANDAKAR MEHEDIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Md.Taimul Islam Tanvir" loading="lazy">MD.TAIMUL ISLAM TANVIR</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Shah Mushfiqur Rahman" loading="lazy">SHAH MUSHFIQUR RAHMAN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Tamanna Islam Anika" loading="lazy">TAMANNA ISLAM ANIKA</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Imtiaz Ahmad Emon" loading="lazy">IMTIAZ AHMAD EMON</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Dibbo Biswas" loading="lazy">DIBBO BISWAS</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Araby Wasin" loading="lazy">ARABY WASIN</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Arunav Bhattacharjee" loading="lazy">ARUNAV BHATTACHARJEE</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Rakib Shihab" loading="lazy">RAKIB SHIHAB</div>
+      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg"><img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Tanzila Hasan" loading="lazy">TANZILA HASAN</div>
+    </div>
+  </div>
+
+  <script>
+    // Name search
+    function searchNames() {
+      let input = document.getElementById("searchBar").value.toUpperCase();
+      let names = document.getElementsByClassName("name");
+      for (let i = 0; i < names.length; i++) {
+        let txt = names[i].textContent || names[i].innerText;
+        if (txt.toUpperCase().indexOf(input) > -1) {
+          names[i].style.display = "";
+        } else {
+          names[i].style.display = "none";
+        }
+      }
+    }
+
+    // Side panel functionality
+    const sidePanel = document.getElementById("sidePanel");
+    const panelImage = document.getElementById("panelImage");
+    const panelName = document.getElementById("panelName");
+    const names = document.getElementsByClassName("name");
+
+    // Add click event to each name
+    for (let i = 0; i < names.length; i++) {
+      names[i].addEventListener("click", function () {
+        const imageSrc = this.getAttribute("data-image");
+        const nameText = this.textContent || this.innerText;
+        panelImage.src = imageSrc;
+        panelImage.alt = nameText;
+        panelName.textContent = nameText;
+        sidePanel.classList.add("active");
+      });
+    }
+
+    // Close panel function
+    function closePanel() {
+      sidePanel.classList.remove("active");
+    }
+  </script>
+</body>
+  </html>
