@@ -39,21 +39,6 @@
     #monogram-container img:hover {
       transform: scale(1.05);
     }
-  #corner-image-container {
-      position: absolute;
-      top: 20px;
-      right: 0px;
-    }
-   
-    #corner-image-container img {
-      max-width: 300px;
-      width: 40%;
-      height: auto;
-    }
-    
-    #corner-image-container img:hover {
-      transform: scale(1.05);
-    }
 
     h1 {
       font-family: 'Handwriting-Draft-Free-Version', 'Montserrat', Georgia, serif;
@@ -216,7 +201,7 @@
       box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
       transition: right 0.4s ease-in-out;
       z-index: 1000;
-      display: flex;
+      display: 100%;
       flex-direction: column;
       align-items: center;
       padding: 25px;
@@ -230,7 +215,7 @@
       max-width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 6px 20px rgba(0, 0,0, 0.5);
       margin-bottom: 25px;
       transition: transform 0.3s;
     }
@@ -276,7 +261,6 @@
       .mine { max-width: 99vw; }
       .name-box { padding: 25px 6vw 20px 6vw; }
       #monogram-container img { max-width: 90vw; }
-      #corner-image-container img { max-width: 65px; }
       .side-panel { width: 80vw; }
       h1 { font-size: 3em; }
     }
@@ -288,16 +272,12 @@
       .side-panel { width: 100vw; }
       h1 { font-size: 2.5em; }
       #monogram-container img { max-width: 80vw; }
-      #corner-image-container img { max-width: 55px; }
     }
   </style>
 </head>
 <body>
   <div id="monogram-container">
     <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Military_Institute_of_Science_and_Technology_Monogram.svg.png" alt="MIST Monogram">
-  </div>
-  <div id="corner-image-container">
-    <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Picsart_25-06-05_23-57-34-644.png" alt="Corner Image">
   </div>
   <h1>CIVIL-27</h1>
   <div id="link-container">
