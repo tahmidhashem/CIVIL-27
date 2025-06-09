@@ -406,21 +406,26 @@
       font-size: 0.9em;
     }
     .welcome-message {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(10, 25, 47, 0.9);
-      color: #f5c769;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 1.2em;
-      padding: 10px 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      z-index: 900;
-      display: none;
-      border: 2px solid #d4a017;
-    }
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 25, 47, 0.9);
+  color: #f5c769;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 900;
+  border: 2px solid #d4a017;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.welcome-message.ghosted {
+  opacity: 0;
+}
 
     @media (max-width: 900px) {
       .mine { max-width: 99vw; }
@@ -1070,6 +1075,48 @@
         name.style.display = (id.includes(input) || text.includes(input)) ? '' : 'none';
       });
     }
+    // Handle welcome message fade-out
+function showWelcomeMessage(name) {
+  welcomeMessage.textContent = `Welcome, ${name}`;
+  welcomeMessage.style.display = 'block';
+  setTimeout(() => {
+    welcomeMessage.classList.add('ghosted');
+    setTimeout(() => {
+      welcomeMessage.style.display = 'none';
+      welcomeMessage.classList.remove('ghosted');
+    }, 500); // Matches the transition duration
+  }, 4000); // Display for 4 seconds before fading
+}
+
+// Modify login success to use fade-out welcome
+loginForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const userId = document.getElementById('userId').value.trim().toUpperCase();
+  const password = document.getElementById('password').value;
+  const validId = nameData.find(data => data.id.toUpperCase() === userId);
+  const validPassword = password === 'civil27';
+
+  if (validId && validPassword) {
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('userId', validId.id);
+    localStorage.setItem('userName', validId.text);
+    showWelcomeMessage(validId.text); // Use fade-out welcome
+    updateMenu(true, validId.text);
+    closeLoginPanel();
+  } else {
+    error.style.display = 'block';
+  }
+});
+
+// Update onload to use fade-out welcome
+window.onload = function() {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const userName = localStorage.getItem('userName');
+  updateMenu(isAuthenticated, userName);
+  if (isAuthenticated && userName) {
+    showWelcomeMessage(userName); // Use fade-out welcome on load
+  }
+};
   </script>
 </body>
 </html>
