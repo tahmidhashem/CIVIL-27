@@ -265,9 +265,9 @@
       background: #d4a017;
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2em;
+      width: 48px;
+      height: 48px;
+      font-size: 1.4em;
       color: #fff;
       cursor: pointer;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
@@ -283,7 +283,7 @@
     }
     .menu-btn::before {
       content: '⋮';
-      font-size: 1.8em;
+      font-size: 2em;
       line-height: 1;
     }
 
@@ -370,23 +370,8 @@
   </div>
 
   <div class="mine">
-    <div class="name-box">
-      <!-- Existing name divs remain unchanged -->
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="" data-id="CE27001">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Sania Mirza" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27001</span>
-          <span class="name-text">SANIA MIRZA</span>
-        </div>
-      </div>
-      <!-- ... (other name divs as in your original code) ... -->
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="" data-id="CE27057">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="Tanzila Hasan" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27057</span>
-          <span class="name-text">TANZILA HASAN</span>
-        </div>
-      </div>
+    <div class="name-box" id="nameBox">
+      <!-- Names will be dynamically inserted here -->
     </div>
   </div>
 
@@ -420,7 +405,7 @@
       { id: "CE27025", text: "MAHDI FAIYAZ FARAZI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27026", text: "MD.ALIF HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27027", text: "K.M ZAHINUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-      { id: "CE27028", text: "HASNAIN AHMED SOUMIC", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
+      { id: "CE27028", text: "HASNAINustomed SOUMIC", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27029", text: "FAHMID HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27030", text: "RAMIS JOHRA ISHRA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27031", text: "MD.ZEHAD AL SABA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -436,7 +421,7 @@
       { id: "CE27041", text: "MD.TOQI TAHMID RAYAT", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27042", text: "AFRIN JAHAN NADIA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27043", text: "SUBORNA RANI ROY", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-      { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
+      { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27045", text: "IREENA ASHRAF", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27047", text: "SADIA ISRAT SOBORNA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -451,6 +436,24 @@
       { id: "CE27056", text: "RAKIB SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27057", text: "TANZILA HASAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" }
     ];
+
+    // Dynamically populate name-box
+    const nameBox = document.getElementById("nameBox");
+    nameData.forEach(data => {
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "name";
+      nameDiv.setAttribute("data-image", data.image);
+      nameDiv.setAttribute("data-bloodgroup", data.bloodgroup || "Not Available");
+      nameDiv.setAttribute("data-id", data.id);
+      nameDiv.innerHTML = `
+        <img src="${data.image}" alt="${data.text}" loading="lazy">
+        <div class="name-content">
+          <span class="name-id">${data.id}</span>
+          <span class="name-text">${data.text}</span>
+        </div>
+      `;
+      nameBox.appendChild(nameDiv);
+    });
 
     // Name and ID search
     function searchNames() {
@@ -501,11 +504,11 @@
       menuPanel.classList.toggle("active");
     }
 
-    // Show login (placeholder for future functionality)
+    // Show login
     function showLogin() {
-      // For now, just store login status; actual login will be handled in resources.html
       localStorage.setItem("loginAttempt", "true");
-      toggleMenu(); // Close menu after clicking
+      window.location.href = "resources.html";
+      toggleMenu();
     }
   </script>
 </body>
