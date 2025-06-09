@@ -236,6 +236,11 @@
       cursor: pointer;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
       transition: all 0.3s;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1; /* Ensure visibility */
     }
     .close-btn:hover {
       background: #f5c769;
@@ -257,7 +262,6 @@
       letter-spacing: 1px;
     }
 
-    /* Three-dot menu styles */
     .menu-btn {
       position: fixed;
       top: 15px;
@@ -265,9 +269,9 @@
       background: #d4a017;
       border: none;
       border-radius: 50%;
-      width: 48px; /* Increased from 40px */
-      height: 48px; /* Increased from 40px */
-      font-size: 1.4em; /* Increased from 1.2em */
+      width: 48px;
+      height: 48px;
+      font-size: 1.4em;
       color: #fff;
       cursor: pointer;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
@@ -283,8 +287,11 @@
     }
     .menu-btn::before {
       content: '⋮';
-      font-size: 2em; /* Increased from 1.8em */
+      font-size: 2em;
       line-height: 1;
+    }
+    .side-panel.active ~ .menu-btn {
+      display: none; /* Hide menu button when side panel is active */
     }
 
     .menu-panel {
@@ -764,17 +771,17 @@
         </div>
       </div>
       <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27057">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANZILA HASAN" loading="lazy">
+        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANZIMA" loading="lazy">
         <div class="name-content">
           <span class="name-id">CE27057</span>
-          <span class="name-text">TANZILA HASAN</span>
+          <span class="name-text">TANZIMA</span>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Name data for side panel functionality
+    // Name data for side panel
     const nameData = [
       { id: "CE27001", text: "SANIA MIRZA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27002", text: "MD.TURJAUN KHAN TURJO", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -832,63 +839,57 @@
       { id: "CE27054", text: "ARABY WASIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27055", text: "ARUNAV BHATTACHARJEE", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27056", text: "RAKIB SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-      { id: "CE27057", text: "TANZILA HASAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" }
+      { id: "CE27057", text: "TANZIMA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" }
     ];
 
-    // Name and ID search
-    function searchNames() {
-      let input = document.getElementById("searchBar").value.toUpperCase();
-      let names = document.getElementsByClassName("name");
-      for (let i = 0; i < names.length; i++) {
-        let nameText = names[i].querySelector(".name-text").textContent || names[i].querySelector(".name-text").innerText;
-        let id = names[i].getAttribute("data-id") || "";
-        if (nameText.toUpperCase().indexOf(input) > -1 || id.toUpperCase().indexOf(input) > -1) {
-          names[i].style.display = "flex";
-        } else {
-          names[i].style.display = "none";
-        }
-      }
-    }
+    const sidePanel = document.getElementById('sidePanel');
+    const panelId = document.getElementById('panelId');
+    const panelName = document.getElementById('panelName');
+    const panelBloodGroup = document.getElementById('panelBloodGroup');
+    const panelImage = document.getElementById('panelImage');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuBtn = document.querySelector('.menu-btn');
 
-    // Side panel functionality
-    const sidePanel = document.getElementById("sidePanel");
-    const panelImage = document.getElementById("panelImage");
-    const panelName = document.getElementById("panelName");
-    const panelId = document.getElementById("panelId");
-    const panelBloodGroup = document.getElementById("panelBloodGroup");
-    const names = document.getElementsByClassName("name");
-
-    for (let i = 0; i < names.length; i++) {
-      names[i].addEventListener("click", function () {
-        const imageSrc = this.getAttribute("data-image");
-        const nameText = this.querySelector(".name-text").textContent || this.querySelector(".name-text").innerText;
-        const bloodGroup = this.getAttribute("data-bloodgroup") || "Not Available";
-        const id = this.getAttribute("data-id") || "Not Available";
-        panelImage.src = imageSrc;
-        panelImage.alt = nameText;
-        panelId.textContent = `ID: ${id}`;
-        panelName.textContent = nameText;
-        panelBloodGroup.textContent = `Blood group: ${bloodGroup}`;
-        sidePanel.classList.add("active");
+    // Open side panel
+    document.querySelectorAll('.name').forEach(name => {
+      name.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        const person = nameData.find(data => data.id === id);
+        panelId.textContent = person.id;
+        panelName.textContent = person.text;
+        panelBloodGroup.textContent = person.bloodgroup || 'Not Available';
+        panelImage.src = person.image;
+        sidePanel.classList.add('active');
+        menuBtn.style.display = 'none'; // Hide menu button
       });
-    }
+    });
 
-    // Close panel function
+    // Close side panel
     function closePanel() {
-      sidePanel.classList.remove("active");
+      sidePanel.classList.remove('active');
+      menuBtn.style.display = 'flex'; // Show menu button
     }
 
     // Toggle menu panel
     function toggleMenu() {
-      const menuPanel = document.getElementById("menuPanel");
-      menuPanel.classList.toggle("active");
+      menuPanel.classList.toggle('active');
     }
 
-    // Show login
+    // Search functionality
+    function searchNames() {
+      const input = document.getElementById('searchBar').value.toUpperCase();
+      const names = document.querySelectorAll('.name');
+      names.forEach(name => {
+        const id = name.getAttribute('data-id').toUpperCase();
+        const text = name.querySelector('.name-text').textContent.toUpperCase();
+        name.style.display = (id.includes(input) || text.includes(input)) ? '' : 'none';
+      });
+    }
+
+    // Login redirect
     function showLogin() {
-      localStorage.setItem("loginAttempt", "true");
-      window.location.href = "resources.html";
-      toggleMenu();
+      localStorage.setItem('loginAttempt', 'true');
+      window.location.href = 'resources.html';
     }
   </script>
 </body>
