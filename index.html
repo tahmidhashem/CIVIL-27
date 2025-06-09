@@ -1,99 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CIVIL-27 | Elite Civil Engineering</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIVIL-27</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Handwriting-Draft-Free-Version';
-      src: url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/HandwritingDraftFreeVersion-9zlL.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
+      src: url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Handwriting-Draft-Free-Version.ttf') format('truetype');
     }
 
     body {
-      position: relative;
-      min-height: 100vh;
       margin: 0;
-      background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), 
-                  url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Picsart_25-06-05_23-56-20-270.jpg') no-repeat center center fixed;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Picsart_25-06-05_23-56-20-270.jpg') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Quicksand', 'Georgia', 'Times New Roman', Times, serif;
+      font-family: 'Quicksand', sans-serif;
       color: #f5f6f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     #monogram-container {
-      text-align: center;
-      margin: 20px 0;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
     }
     #monogram-container img {
-      max-width: 150px;
-      width: 60%;
+      width: 150px;
       height: auto;
-      display: inline-block;
-      border-radius: 10px;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s;
-    }
-    #monogram-container img:hover {
-      transform: scale(1.05);
     }
 
     h1 {
       font-family: 'Handwriting-Draft-Free-Version', 'Montserrat', Georgia, serif;
       font-size: 3.5em;
-      font-weight: 400;
-      letter-spacing: 3px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-      text-transform: uppercase;
+      color: #d4a017;
       text-align: center;
-      color: #f5c769;
-      background: linear-gradient(90deg, #d4a017, #f5c769);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin: 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    #link-container {
-      text-align: center;
-      margin: 20px 0 15px 0;
-      animation: pop 1.2s ease-out;
-    }
-    @keyframes pop {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    #website-link {
-      display: inline-block;
+    .welcome-message {
+      display: none;
+      background: rgba(10, 25, 47, 0.9);
+      color: #f5c769;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2em;
       padding: 10px 20px;
-      font-size: 1em;
-      font-weight: 700;
-      color: #0a192f;
-      background: linear-gradient(90deg, #d4a017, #f5c769);
-      border: 3px solid #f5c769;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.4), 0 2px 0 rgba(255, 255, 255, 0.2) inset;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      margin: 10px 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      z-index: 900;
+      border: none;
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
     }
-    #website-link:hover {
-      box-shadow: 0 8px 30px rgba(212, 160, 23, 0.6), 0 3px 0 rgba(255, 255, 255, 0.3) inset;
-      background: linear-gradient(90deg, #f5c769, #d4a017);
-      transform: translateY(-2px);
+
+    .welcome-message.active {
+      display: block;
+      border: 2px solid #d4a017;
+    }
+
+    .welcome-message.ghosted {
+      opacity: 0;
     }
 
     #searchBar {
-      display: block;
-      margin: 30px auto 28px auto;
-      padding: 16px 24px;
-      font-size: 1.2em;
-      width: 65%;
-      max-width: 450px;
-      border-radius: 40px;
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 20px 0;
+      font-size: 1em;
       border: none;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.1);
       color: #f5f6f5;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -102,215 +85,139 @@
     #searchBar:focus {
       background: rgba(255, 255, 255, 0.2);
       outline: 2px solid #d4a017;
-      box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
     }
     #searchBar::placeholder {
       color: #b2bec3;
     }
 
-    .mine {
-      display: flex;
-      justify-content: center;
-      margin: 15px auto 50px auto;
-      max-width: 900px;
+    .name-list {
+      list-style: none;
+      padding: 0;
+      width: 80%;
+      max-width: 400px;
     }
-
-    .name-box {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 25px;
-      padding: 30px 28px 20px 28px;
-      font-size: 1.1em;
-      font-weight: 700;
-      color: #f5f6f5;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
-      border: 2px solid rgba(212, 160, 23, 0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      backdrop-filter: blur(5px);
-    }
-    .name-box:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 15px 40px rgba(212, 160, 23, 0.5), 0 2px 0 rgba(255, 255, 255, 0.2) inset;
-      border-color: #d4a017;
-    }
-
     .name {
       display: flex;
       align-items: center;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 80%, rgba(200, 160, 80, 0.2) 100%);
-      color: rgb(200, 160, 80);
-      border-radius: 15px;
-      padding: 8px 18px;
-      margin-bottom: 10px;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 1.05em;
-      letter-spacing: 0.8px;
-      box-shadow: 0 1px 5px rgba(200, 160, 80, 0.2);
+      padding: 10px;
+      margin: 5px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
       transition: all 0.3s ease;
-      cursor: pointer;
-      text-transform: uppercase;
-      width: 100%;
     }
     .name:hover {
-      background: linear-gradient(90deg, rgba(200, 160, 80, 0.3), rgba(220, 180, 100, 0.4));
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(200, 160, 80, 0.5);
-      font-size: 1.1em;
-      letter-spacing: 1.2px;
-      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.1);
     }
-
     .name img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      margin-right: 14px;
-      object-fit: cover;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s;
-    }
-    .name img:hover {
-      transform: scale(1.1);
-    }
-
-    .name-content {
-      display: flex;
-      flex-direction: column;
-    }
-    .name-id {
-      font-size: 0.9em;
-      color: #f5c769;
-      margin-bottom: 2px;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
     }
     .name-text {
+      color: #f5f6f5;
       font-size: 1em;
     }
 
-    .side-panel {
+    #loginPanel {
+      display: none;
       position: fixed;
-      top: 0;
-      right: -400px;
-      width: 400px;
-      height: 100vh;
-      background: rgba(10, 25, 47, 0.95);
-      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
-      transition: right 0.4s ease-in-out;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(212, 160, 23, 0.3);
       z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 25px;
-      overflow-y: auto;
-      backdrop-filter: blur(8px);
-    }
-    .side-panel.active {
-      right: 0;
-    }
-    .side-panel img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-      margin-bottom: 25px;
-      transition: transform 0.3s;
-    }
-    .side-panel img:hover {
-      transform: scale(1.03);
-    }
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #d4a017;
-      border: none;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      font-size: 1.4em;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s;
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 1;
-    }
-    .close-btn:hover {
-      background: #f5c769;
-      transform: rotate(90deg);
-    }
-    .panel-id, .panel-name, .panel-bloodgroup {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 1.1em;
-      font-weight: 600;
-      color: rgb(200, 160, 80);
-      margin-bottom: 15px;
+      backdrop-filter: blur(5px);
       text-align: center;
     }
-    .panel-name {
+    #loginPanel h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.4em;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      color: #f5c769;
+      margin-bottom: 15px;
     }
-
-    .menu-btn {
-      position: fixed;
-      top: 15px;
-      right: 15px;
+    #loginPanel input {
+      display: block;
+      margin: 10px auto;
+      padding: 8px 15px;
+      width: 80%;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f5f6f5;
+      font-size: 1em;
+    }
+    #loginPanel input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: 2px solid #d4a017;
+    }
+    #loginPanel button {
+      padding: 8px 20px;
+      font-size: 1em;
       background: #d4a017;
       border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 1.4em;
-      color: #fff;
+      border-radius: 10px;
+      color: #0a192f;
       cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s;
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      transition: background 0.3s;
     }
-    .menu-btn:hover {
+    #loginPanel button:hover {
       background: #f5c769;
-      transform: scale(1.1);
     }
-    .menu-btn::before {
-      content: '⋮';
-      font-size: 2em;
-      line-height: 1;
-    }
-    .side-panel.active ~ .menu-btn {
+    #error {
+      color: #ff6b6b;
+      margin-top: 10px;
       display: none;
+    }
+    #closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2em;
+      color: #f5f6f5;
+      cursor: pointer;
+    }
+
+    #menuBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5em;
+      background: rgba(212, 160, 23, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: #f5f6f5;
+      cursor: pointer;
+      z-index: 800;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    #menuBtn:hover {
+      background: #f5c769;
     }
 
     .menu-panel {
+      display: none;
       position: fixed;
       top: 0;
-      right: -300px;
-      width: 300px;
-      height: 100vh;
-      background: rgba(10, 25, 47, 0.95);
-      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
-      transition: right 0.4s ease-in-out;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      backdrop-filter: blur(8px);
+      right: 0;
+      width: 250px;
+      height: 100%;
+      background: rgba(10, 25, 47, 0.9);
+      padding-top: 60px;
+      z-index: 700;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
     }
     .menu-panel.active {
-      right: 0;
+      display: block;
+      transform: translateX(0);
     }
     .menu-panel a {
       display: block;
@@ -322,130 +229,25 @@
       margin: 10px 0;
       border-radius: 10px;
       transition: all 0.3s ease;
+      font-family: 'Handwriting-Draft-Free-Version', 'Montserrat', Georgia, serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .menu-panel a:hover {
       background: rgba(200, 160, 80, 0.3);
       color: #fff;
     }
 
-    .login-panel {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 400px;
-      height: 100vh;
-      background: rgba(10, 25, 47, 0.95);
-      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
-      transition: right 0.4s ease-in-out;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 25px;
-      backdrop-filter: blur(8px);
-    }
-    .login-panel.active {
-      right: 0;
-    }
-    .login-container {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 25px;
-      padding: 30px;
-      max-width: 350px;
-      width: 90%;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-      border: 2px solid rgba(212, 160, 23, 0.3);
-      text-align: center;
-    }
-    .login-container h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.8em;
-      color: #f5c769;
-      margin-bottom: 20px;
-    }
-    .login-container input {
-      display: block;
-      margin: 15px auto;
-      padding: 12px 20px;
-      font-size: 1.1em;
-      width: 80%;
-      border-radius: 20px;
-      border: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f5f6f5;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-    }
-    .login-container input:focus {
-      background: rgba(255, 255, 255, 0.2);
-      outline: 2px solid #d4a017;
-    }
-    .login-container input::placeholder {
-      color: #b2bec3;
-    }
-    .login-container button {
-      padding: 10px 20px;
-      font-size: 1em;
-      font-weight: 700;
-      color: #0a192f;
-      background: linear-gradient(90deg, #d4a017, #f5c769);
-      border: 3px solid #f5c769;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.4);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .login-container button:hover {
-      background: linear-gradient(90deg, #f5c769, #d4a017);
-      transform: translateY(-2px);
-    }
-    #error {
-      color: #ff6b6b;
-      margin: 10px 0;
-      display: none;
-      font-size: 0.9em;
-    }
-    .welcome-message {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(10, 25, 47, 0.9);
-  color: #f5c769;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.2em;
-  padding: 10px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  z-index: 900;
-  border: 2px solid #d4a017;
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
-}
-
-.welcome-message.ghosted {
-  opacity: 0;
-}
-
-    @media (max-width: 900px) {
-      .mine { max-width: 99vw; }
-      .name-box { padding: 25px 6vw 20px 6vw; }
-      .menu-panel { width: 80vw; }
-      #monogram-container img { max-width: 90vw; }
-      .side-panel { width: 80vw; }
-      h1 { font-size: 3em; }
-    }
-    @media (max-width: 700px) {
-      .mine { flex-direction: column; align-items: center; }
-      .name-box { width: 95%; min-height: unset; }
-      .menu-panel { width: 100vw; }
-      #searchBar { width: 90%; font-size: 1.1em; }
-      .name img { width: 38px; height: 38px; }
-      .side-panel { width: 100vw; }
-      h1 { font-size: 2.5em; }
-      #monogram-container img { max-width: 80vw; }
-      .login-panel { width: 100vw; }
-      .welcome-message { font-size: 1em; padding: 8px 15px; }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      #searchBar {
+        width: 90%;
+      }
+      .name-list {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -453,552 +255,95 @@
   <div id="monogram-container">
     <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Military_Institute_of_Science_and_Technology_Monogram.svg.png" alt="MIST Monogram">
   </div>
-  <h1>CIVIL-27</h1>
-  <div id="link-container">
-    <a id="website-link" href="https://mist.ac.bd/department/ce" target="_blank">Visit CE Department</a>
-  </div>
-  <input type="text" id="searchBar" onkeyup="searchNames()" placeholder="Search by name or ID...">
-
-  <!-- Three-dot menu button -->
-  <button class="menu-btn" onclick="toggleMenu()"></button>
-
-  <!-- Menu panel -->
-  <div id="menuPanel" class="menu-panel"></div>
-
-  <!-- Login Panel -->
-  <div id="loginPanel" class="login-panel">
-    <button class="close-btn" onclick="closeLoginPanel()">×</button>
-    <div class="login-container">
-      <h2>Log In</h2>
-      <form id="loginForm">
-        <input type="text" id="userId" placeholder="Enter ID (e.g., CE27001)" required>
-        <input type="password" id="password" placeholder="Enter Password" required>
-        <button type="submit">Login</button>
-      </form>
-      <div id="error">Invalid ID or Password</div>
-    </div>
-  </div>
-
-  <!-- Welcome Message -->
   <div id="welcomeMessage" class="welcome-message"></div>
+  <h1>CIVIL-27</h1>
+  <input type="text" id="searchBar" placeholder="Search by name or ID...">
+  <ul class="name-list" id="nameList"></ul>
 
-  <!-- Side Panel -->
-  <div id="sidePanel" class="side-panel">
-    <button class="close-btn" onclick="closePanel()">×</button>
-    <div class="panel-id" id="panelId"></div>
-    <div class="panel-name" id="panelName"></div>
-    <div class="panel-bloodgroup" id="panelBloodGroup"></div>
-    <img id="panelImage" src="" alt="Selected Person">
+  <div id="loginPanel">
+    <span id="closeBtn">&times;</span>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="userId" placeholder="Enter ID (e.g., CE27001)" required>
+      <input type="password" id="password" placeholder="Enter Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div id="error">Invalid ID or Password</div>
   </div>
 
-  <div class="mine">
-    <div class="name-box">
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27001">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SANIA MIRZA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27001</span>
-          <span class="name-text">SANIA MIRZA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27002">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TURJAUN KHAN TURJO" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27002</span>
-          <span class="name-text">MD.TURJAUN KHAN TURJO</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27003">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAIM KHAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27003</span>
-          <span class="name-text">MD.SAIM KHAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27004">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MOUMITA DAS" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27004</span>
-          <span class="name-text">MOUMITA DAS</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27005">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RIMJHIM SAHA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27005</span>
-          <span class="name-text">RIMJHIM SAHA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27006">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ANISHA ANOWER" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27006</span>
-          <span class="name-text">ANISHA ANOWER</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27007">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="AKIDA ADNIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27007</span>
-          <span class="name-text">AKIDA ADNIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27008">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="JINAT RAHMAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27008</span>
-          <span class="name-text">JINAT RAHMAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27009">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MARIA ISLAM SOHA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27009</span>
-          <span class="name-text">MARIA ISLAM SOHA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27010">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANMOY DAKUA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27010</span>
-          <span class="name-text">TANMOY DAKUA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27011">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="FARNAZ RAHMAN MALIHA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27011</span>
-          <span class="name-text">FARNAZ RAHMAN MALIHA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27012">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ADIB MASRUR KHAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27012</span>
-          <span class="name-text">ADIB MASRUR KHAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27013">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAH AHMED RUPAM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27013</span>
-          <span class="name-text">SHAH AHMED RUPAM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27014">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="LABEED LOHANI KHAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27014</span>
-          <span class="name-text">LABEED LOHANI KHAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27015">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ABDULLAH AL FAHAT BHUIYA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27015</span>
-          <span class="name-text">ABDULLAH AL FAHAT BHUIYA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27016">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MANTASHA MURSHID" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27016</span>
-          <span class="name-text">MANTASHA MURSHID</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27017">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TASFIA TABASSUM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27017</span>
-          <span class="name-text">TASFIA TABASSUM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27018">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="NAZIFA ZAMAL DIYA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27018</span>
-          <span class="name-text">NAZIFA ZAMAL DIYA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27019">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ASHFAK ZAMAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27019</span>
-          <span class="name-text">ASHFAK ZAMAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" data-bloodgroup="A+" data-id="CE27020">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" alt="TAHMID IBNE HASHEM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27020</span>
-          <span class="name-text">TAHMID IBNE HASHEM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27021">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.MUFIDUL ISLAM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27021</span>
-          <span class="name-text">MD.MUFIDUL ISLAM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27022">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MARUFA ISLAM SUCHONA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27022</span>
-          <span class="name-text">MARUFA ISLAM SUCHONA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27023">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAKIB AL HASAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27023</span>
-          <span class="name-text">SHAKIB AL HASAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27024">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SABBIR UDDIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27024</span>
-          <span class="name-text">MD.SABBIR UDDIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27025">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MAHDI FAIYAZ FARAZI" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27025</span>
-          <span class="name-text">MAHDI FAIYAZ FARAZI</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27026">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ALIF HOSSAIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27026</span>
-          <span class="name-text">MD.ALIF HOSSAIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27027">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="K.M ZAHINUR RAHMAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27027</span>
-          <span class="name-text">K.M ZAHINUR RAHMAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27028">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="HASNAIN AHMED SOUMIC" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27028</span>
-          <span class="name-text">HASNAIN AHMED SOUMIC</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27029">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="FAHMID HOSSAIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27029</span>
-          <span class="name-text">FAHMID HOSSAIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27030">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RAMIS JOHRA ISHRA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27030</span>
-          <span class="name-text">RAMIS JOHRA ISHRA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27031">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZEHAD AL SABA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27031</span>
-          <span class="name-text">MD.ZEHAD AL SABA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27032">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAIDUL ISLAM GIAM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27032</span>
-          <span class="name-text">MD.SAIDUL ISLAM GIAM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27033">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="NAFIS MAHMUD" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27033</span>
-          <span class="name-text">NAFIS MAHMUD</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27034">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.EMAD UDDIN EMU" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27034</span>
-          <span class="name-text">MD.EMAD UDDIN EMU</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27035">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TAKBIR HOSSAIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27035</span>
-          <span class="name-text">MD.TAKBIR HOSSAIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27036">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MST.TASFIA FAIRUS" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27036</span>
-          <span class="name-text">MST.TASFIA FAIRUS</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27037">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ISHRAT JAHAN RAISA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27037</span>
-          <span class="name-text">ISHRAT JAHAN RAISA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27038">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ASHRAFUL ISLAM SOHAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27038</span>
-          <span class="name-text">MD.ASHRAFUL ISLAM SOHAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27039">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.RIADUZZAMAN MOLLA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27039</span>
-          <span class="name-text">MD.RIADUZZAMAN MOLLA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27040">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAYEED HOSSAIN SHIHAB" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27040</span>
-          <span class="name-text">MD.SAYEED</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27041">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TOQI TAHMID RAYAT" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27041</span>
-          <span class="name-text">MD.TOQI TAHMID RAYAT</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27042">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="AFRIN JAHAN NADIA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27042</span>
-          <span class="name-text">AFRIN JAHAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27043">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SUBORNA RANI ROY" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27043</span>
-          <span class="name-text">SUBORNA RANI ROY</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27044">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZAKIUL ISLAM AL JAMI" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27044</span>
-          <span class="name-text">MD.ZAKIUL ISLAM AL JAMI</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27045">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="IREENA ASHRAF" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27045</span>
-          <span class="name-text">IREENA ASHRAF</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27046">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.RUBAYET HOSSAIN RIHAM" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27046</span>
-          <span class="name-text">MD.RUBAYET HOSSAIN RIHAM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27047">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SADIA ISLAM SOBORNA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27047</span>
-          <span class="name-text">SADIA ISLAM</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27048">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="KHANDAKAR MEHEDIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27048</span>
-          <span class="name-text">KHANDAKAR MEHEDIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27049">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TAIMUL ISLAM TANVIR" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27049</span>
-          <span class="name-text">MD.TAIMUL ISLAM TANVIR</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27050">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAH MUSHFIQUR RAHMAN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27050</span>
-          <span class="name-text">SHAH MUSHFIQUR RAHMAN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27051">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TAMANNA ISLAM ANIKA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27051</span>
-          <span class="name-text">TAMANNA ISLAM ANIKA</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27052">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="IMTIAZ AHMAD EMON" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27052</span>
-          <span class="name-text">IMTIAZ AHMAD EMON</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27053">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="DIBBO BISWAS" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27053</span>
-          <span class="name-text">DIBBO BISWAS</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27054">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ARABY WASIN" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27054</span>
-          <span class="name-text">ARABY WASIN</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27055">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ARUNAV BHATTACHARJEE" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27055</span>
-          <span class="name-text">ARUNAV BHATTACHARJEE</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27056">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RAKIB SHIHAB" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27056</span>
-          <span class="name-text">RAKIB SHIHAB</span>
-        </div>
-      </div>
-      <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27057">
-        <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANZIMA" loading="lazy">
-        <div class="name-content">
-          <span class="name-id">CE27057</span>
-          <span class="name-text">TANZIMA</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <button id="menuBtn">&#8942;</button>
+  <div class="menu-panel" id="menuPanel"></div>
 
   <script>
-    // Name data for side panel and login
+    // Name data for authentication and display
     const nameData = [
-      { id: "CE27001", text: "SANIA MIRZA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27002", text: "MD.TURJAUN KHAN TURJO", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27003", text: "MD.SAIM KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27004", text: "MOUMITA DAS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27005", text: "RIMJHIM SAHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27006", text: "ANISHA ANOWER", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27007", text: "AKIDA ADNIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27008", text: "JINAT RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27009", text: "MARIA ISLAM SOHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27010", text: "TANMOY DAKUA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27011", text: "FARNAZ RAHMAN MALIHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27012", text: "ADIB MASRUR KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27013", text: "SHAH AHMED RUPAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27014", text: "LABEED LOHANI KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27015", text: "ABDULLAH AL FAHAT BHUIYA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27016", text: "MANTASHA MURSHID", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27017", text: "TASFIA TABASSUM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27018", text: "NAZIFA ZAMAL DIYA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27019", text: "ASHFAK ZAMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27020", text: "TAHMID IBNE HASHEM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg", bloodgroup: "A+" },
-      { id: "CE27021", text: "MD.MUFIDUL ISLAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27022", text: "MARUFA ISLAM SUCHONA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27023", text: "SHAKIB AL HASAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27024", text: "MD.SABBIR UDDIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27025", text: "MAHDI FAIYAZ FARAZI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27026", text: "MD.ALIF HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27027", text: "K.M ZAHINUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27028", text: "HASNAIN AHMED SOUMIC", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27029", text: "FAHMID HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27030", text: "RAMIS JOHRA ISHRA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27031", text: "MD.ZEHAD AL SABA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27032", text: "MD.SAIDUL ISLAM GIAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27033", text: "NAFIS MAHMUD", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27034", text: "MD.EMAD UDDIN EMU", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27035", text: "MD.TAKBIR HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27036", text: "MST.TASFIA FAIRUS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27037", text: "ISHRAT JAHAN RAISA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27038", text: "MD.ASHRAFUL ISLAM SOHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27039", text: "MD.RIADUZZAMAN MOLLA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27041", text: "MD.TOQI TAHMID RAYAT", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27042", text: "AFRIN JAHAN NADIA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27043", text: "SUBORNA RANI ROY", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27045", text: "IREENA ASHRAF", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27047", text: "SADIA ISLAM SOBORNA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27048", text: "KHANDKAR MEHEDIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27051", text: "TAMANNA ISLAM ANIKA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27052", text: "IMTIAZ AHMAD EMON", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27053", text: "DIBBO BISWAS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27054", text: "ARABY WASIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27055", text: "ARUNAV BHATTACHARJEE", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27056", text: "RAKIB SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null },
-      { id: "CE27057", text: "TANZIMA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL_27/main/received_720045293734431.jpeg", bloodgroup: null }
+      { id: "CE27001", text: "SANIA MIRZA" },
+      { id: "CE27002", text: "MD.TURJAUN KHAN TURJO" },
+      { id: "CE27003", text: "MD.SAIM KHAN" },
+      { id: "CE27004", text: "MOUMITA DAS" },
+      { id: "CE27005", text: "RIMJHIM SAHA" },
+      { id: "CE27006", text: "ANISHA ANOWER" },
+      { id: "CE27007", text: "AKIDA ADNIN" },
+      { id: "CE27008", text: "JINAT RAHMAN" },
+      { id: "CE27009", text: "MARIA ISLAM SOHA" },
+      { id: "CE27010", text: "TANMOY DAKUA" },
+      { id: "CE27011", text: "FARNAZ RAHMAN MALIHA" },
+      { id: "CE27012", text: "ADIB MASRUR KHAN" },
+      { id: "CE27013", text: "SHAH AHMED RUPAM" },
+      { id: "CE27014", text: "LABEED LOHANI KHAN" },
+      { id: "CE27015", text: "ABDULLAH AL FAHAT BHUIYA" },
+      { id: "CE27016", text: "MANTASHA MURSHID" },
+      { id: "CE27017", text: "TASFIA TABASSUM" },
+      { id: "CE27018", text: "NAZIFA ZAMAL DIYA" },
+      { id: "CE27019", text: "ASHFAK ZAMAN" },
+      { id: "CE27020", text: "TAHMID IBNE HASHEM" },
+      { id: "CE27021", text: "MD.MUFIDUL ISLAM" },
+      { id: "CE27022", text: "MARUFA ISLAM SUCHONA" },
+      { id: "CE27023", text: "SHAKIB AL HASAN" },
+      { id: "CE27024", text: "MD.SABBIR UDDIN" },
+      { id: "CE27025", text: "MAHDI FAIYAZ FARAZI" },
+      { id: "CE27026", text: "MD.ALIF HOSSAIN" },
+      { id: "CE27027", text: "K.M ZAHINUR RAHMAN" },
+      { id: "CE27028", text: "HASNAIN AHMED SOUMIC" },
+      { id: "CE27029", text: "FAHMID HOSSAIN" },
+      { id: "CE27030", text: "RAMIS JOHRA ISHRA" },
+      { id: "CE27031", text: "MD.ZEHAD AL SABA" },
+      { id: "CE27032", text: "MD.SAIDUL ISLAM GIAM" },
+      { id: "CE27033", text: "NAFIS MAHMUD" },
+      { id: "CE27034", text: "MD.EMAD UDDIN EMU" },
+      { id: "CE27035", text: "MD.TAKBIR HOSSAIN" },
+      { id: "CE27036", text: "MST.TASFIA FAIRUS" },
+      { id: "CE27037", text: "ISHRAT JAHAN RAISA" },
+      { id: "CE27038", text: "MD.ASHRAFUL ISLAM SOHAN" },
+      { id: "CE27039", text: "MD.RIADUZZAMAN MOLLA" },
+      { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB" },
+      { id: "CE27041", text: "MD.TOQI TAHMID RAYAT" },
+      { id: "CE27042", text: "AFRIN JAHAN NADIA" },
+      { id: "CE27043", text: "SUBORNA RANI ROY" },
+      { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI" },
+      { id: "CE27045", text: "IREENA ASHRAF" },
+      { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM" },
+      { id: "CE27047", text: "SADIA ISRAT SOBORNA" },
+      { id: "CE27048", text: "KHANDAKAR MEHEDIN" },
+      { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR" },
+      { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN" },
+      { id: "CE27051", text: "TAMANNA ISLAM ANIKA" },
+      { id: "CE27052", text: "IMTIAZ AHMAD EMON" },
+      { id: "CE27053", text: "DIBBO BISWAS" },
+      { id: "CE27054", text: "ARABY WASIN" },
+      { id: "CE27055", text: "ARUNAV BHATTACHARJEE" },
+      { id: "CE27056", text: "RAKIB SHIHAB" },
+      { id: "CE27057", text: "TANZIMA" }
     ];
 
-    const sidePanel = document.getElementById('sidePanel');
-    const panelId = document.getElementById('panelId');
-    const panelName = document.getElementById('panelName');
-    const panelBloodGroup = document.getElementById('panelBloodGroup');
-    const panelImage = document.getElementById('panelImage');
-    const menuPanel = document.getElementById('menuPanel');
-    const menuBtn = document.querySelector('.menu-btn');
-    const loginPanel = document.getElementById('loginPanel');
-    const loginForm = document.getElementById('loginForm');
-    const error = document.getElementById('error');
-    const welcomeMessage = document.getElementById('welcomeMessage');
-
-    // Initialize page based on login state
-    window.onload = function() {
-      const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-      const userName = localStorage.getItem('userName');
-      updateMenu(isAuthenticated, userName);
-      if (isAuthenticated && userName) {
-        welcomeMessage.textContent = `Welcome, ${userName}`;
-        welcomeMessage.style.display = 'block';
-      }
-    };
-
-    // Open side panel
-    document.querySelectorAll('.name').forEach(name => {
-      name.addEventListener('click', function() {
-        const id = this.getAttribute('data-id');
-        const person = nameData.find(data => data.id === id);
-        panelId.textContent = person.id;
-        panelName.textContent = person.text;
-        panelBloodGroup.textContent = person.bloodgroup || 'Not Available';
-        panelImage.src = person.image;
-        sidePanel.classList.add('active');
-        menuBtn.style.display = 'none';
-      });
+    const nameList = document.getElementById('nameList');
+    nameData.forEach(data => {
+      const li = document.createElement('li');
+      li.className = 'name';
+      li.setAttribute('data-id', data.id);
+      li.innerHTML = `<img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/user.png" alt="User Icon"> <span class="name-text">${data.text}</span>`;
+      nameList.appendChild(li);
     });
-
-    // Close side panel
-    function closePanel() {
-      sidePanel.classList.remove('active');
-      menuBtn.style.display = 'flex';
-    }
 
     // Toggle menu panel
     function toggleMenu() {
@@ -1020,7 +365,21 @@
       error.style.display = 'none';
     }
 
-    // Handle login
+    // Handle welcome message fade-out
+    function showWelcomeMessage(name) {
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      welcomeMessage.textContent = `Welcome, ${name}`;
+      welcomeMessage.classList.add('active');
+      setTimeout(() => {
+        welcomeMessage.classList.add('ghosted');
+        setTimeout(() => {
+          welcomeMessage.classList.remove('active', 'ghosted');
+          welcomeMessage.style.display = 'none';
+        }, 500);
+      }, 4000);
+    }
+
+    // Modify login success to use welcome message
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const userId = document.getElementById('userId').value.trim().toUpperCase();
@@ -1032,8 +391,7 @@
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userId', validId.id);
         localStorage.setItem('userName', validId.text);
-        welcomeMessage.textContent = `Welcome, ${validId.text}`;
-        welcomeMessage.style.display = 'block';
+        showWelcomeMessage(validId.text);
         updateMenu(true, validId.text);
         closeLoginPanel();
       } else {
@@ -1075,48 +433,21 @@
         name.style.display = (id.includes(input) || text.includes(input)) ? '' : 'none';
       });
     }
-    // Handle welcome message fade-out
-function showWelcomeMessage(name) {
-  welcomeMessage.textContent = `Welcome, ${name}`;
-  welcomeMessage.style.display = 'block';
-  setTimeout(() => {
-    welcomeMessage.classList.add('ghosted');
-    setTimeout(() => {
-      welcomeMessage.style.display = 'none';
-      welcomeMessage.classList.remove('ghosted');
-    }, 500); // Matches the transition duration
-  }, 4000); // Display for 4 seconds before fading
-}
 
-// Modify login success to use fade-out welcome
-loginForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const userId = document.getElementById('userId').value.trim().toUpperCase();
-  const password = document.getElementById('password').value;
-  const validId = nameData.find(data => data.id.toUpperCase() === userId);
-  const validPassword = password === 'civil27';
+    // Initialize on load
+    window.onload = function() {
+      const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+      const userName = localStorage.getItem('userName');
+      updateMenu(isAuthenticated, userName);
+      if (isAuthenticated && userName) {
+        showWelcomeMessage(userName);
+      }
+    };
 
-  if (validId && validPassword) {
-    localStorage.setItem('isAuthenticated', 'true');
-    localStorage.setItem('userId', validId.id);
-    localStorage.setItem('userName', validId.text);
-    showWelcomeMessage(validId.text); // Use fade-out welcome
-    updateMenu(true, validId.text);
-    closeLoginPanel();
-  } else {
-    error.style.display = 'block';
-  }
-});
-
-// Update onload to use fade-out welcome
-window.onload = function() {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  const userName = localStorage.getItem('userName');
-  updateMenu(isAuthenticated, userName);
-  if (isAuthenticated && userName) {
-    showWelcomeMessage(userName); // Use fade-out welcome on load
-  }
-};
+    // Event listeners
+    document.getElementById('searchBar').addEventListener('input', searchNames);
+    document.getElementById('menuBtn').addEventListener('click', toggleMenu);
+    document.getElementById('closeBtn').addEventListener('click', closeLoginPanel);
   </script>
 </body>
 </html>
