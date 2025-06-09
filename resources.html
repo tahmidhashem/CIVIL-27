@@ -155,7 +155,7 @@
   </div>
 
   <script>
-    // Name data for authentication (same as in index.html)
+    // Name data for authentication
     const nameData = [
       { id: "CE27001", text: "SANIA MIRZA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
       { id: "CE27002", text: "MD.TURJAUN KHAN TURJO", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -219,7 +219,7 @@
     // Authentication logic
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const userId = document.getElementById("userId").value;
+      const userId = document.getElementById("userId").value.toUpperCase();
       const password = document.getElementById("password").value;
       const error = document.getElementById("error");
       const loginContainer = document.getElementById("loginContainer");
@@ -229,11 +229,14 @@
       const isValidId = nameData.some(user => user.id === userId);
       if (isValidId && password === "civil27") {
         localStorage.setItem("isAuthenticated", "true");
+        localStorage.removeItem("loginAttempt");
         loginContainer.style.display = "none";
         resourceContainer.style.display = "block";
         error.style.display = "none";
       } else {
         error.style.display = "block";
+        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("loginAttempt");
       }
     });
 
@@ -241,11 +244,15 @@
     if (localStorage.getItem("isAuthenticated") === "true") {
       document.getElementById("loginContainer").style.display = "none";
       document.getElementById("resourceContainer").style.display = "block";
+    } else if (localStorage.getItem("loginAttempt") === "true") {
+      document.getElementById("loginContainer").style.display = "block";
+      document.getElementById("resourceContainer").style.display = "none";
     }
 
     // Logout function
     function logout() {
       localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("loginAttempt");
       document.getElementById("loginContainer").style.display = "block";
       document.getElementById("resourceContainer").style.display = "none";
     }
