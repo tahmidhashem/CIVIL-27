@@ -24,6 +24,34 @@
       align-items: center;
     }
 
+    #welcomeMessage {
+      display: none;
+      background: rgba(10, 25, 47, 0.9);
+      color: #f5c769;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      z-index: 900;
+      border: none;
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    #welcomeMessage.active {
+      display: block;
+      border: 2px solid #d4a017;
+    }
+
+    #welcomeMessage.ghosted {
+      opacity: 0;
+    }
+
     #monogram-container {
       margin-top: 20px;
       display: flex;
@@ -42,31 +70,6 @@
       margin: 10px 0;
       text-transform: uppercase;
       letter-spacing: 2px;
-    }
-
-    .welcome-message {
-      display: none;
-      background: rgba(10, 25, 47, 0.9);
-      color: #f5c769;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 1.2em;
-      padding: 10px 20px;
-      margin: 10px 0;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      z-index: 900;
-      border: none;
-      opacity: 1;
-      transition: opacity 0.5s ease-out;
-    }
-
-    .welcome-message.active {
-      display: block;
-      border: 2px solid #d4a017;
-    }
-
-    .welcome-message.ghosted {
-      opacity: 0;
     }
 
     #searchBar {
@@ -252,16 +255,16 @@
   </style>
 </head>
 <body>
+  <div id="welcomeMessage" class="welcome-message"></div>
   <div id="monogram-container">
     <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Military_Institute_of_Science_and_Technology_Monogram.svg.png" alt="MIST Monogram">
   </div>
-  <div id="welcomeMessage" class="welcome-message"></div>
   <h1>CIVIL-27</h1>
   <input type="text" id="searchBar" placeholder="Search by name or ID...">
   <ul class="name-list" id="nameList"></ul>
 
   <div id="loginPanel">
-    <span id="closeBtn">&times;</span>
+    <span id="closeBtn">×</span>
     <h2>Login</h2>
     <form id="loginForm">
       <input type="text" id="userId" placeholder="Enter ID (e.g., CE27001)" required>
@@ -271,7 +274,7 @@
     <div id="error">Invalid ID or Password</div>
   </div>
 
-  <button id="menuBtn">&#8942;</button>
+  <button id="menuBtn">⋮</button>
   <div class="menu-panel" id="menuPanel"></div>
 
   <script>
