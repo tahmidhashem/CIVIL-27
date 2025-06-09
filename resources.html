@@ -1,62 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Resources | CIVIL-27</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources - CIVIL-27</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Handwriting-Draft-Free-Version';
-      src: url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/HandwritingDraftFreeVersion-9zlL.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
     body {
-      position: relative;
-      min-height: 100vh;
       margin: 0;
-      background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), 
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), 
                   url('https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Picsart_25-06-05_23-56-20-270.jpg') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Quicksand', 'Georgia', 'Times New Roman', Times, serif;
+      font-family: 'Quicksand', sans-serif;
       color: #f5f6f5;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
-    h1 {
-      font-family: 'Handwriting-Draft-Free-Version', 'Montserrat', Georgia, serif;
-      font-size: 3.5em;
-      font-weight: 400;
-      letter-spacing: 3px;
-      margin-top: 20px;
-      margin-bottom: 30px;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
-      text-transform: uppercase;
-      text-align: center;
-      color: #f5c769;
-      background: linear-gradient(90deg, #d4a017, #f5c769);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .login-container, .resource-container {
+    #loginContainer {
       background: rgba(255, 255, 255, 0.15);
       border-radius: 25px;
       padding: 30px;
-      max-width: 500px;
+      max-width: 400px;
       width: 90%;
       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
       border: 2px solid rgba(212, 160, 23, 0.3);
-      backdrop-filter: blur(5px);
       text-align: center;
+      backdrop-filter: blur(5px);
     }
-
-    .login-container input {
+    #loginContainer h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8em;
+      color: #f5c769;
+      margin-bottom: 20px;
+    }
+    #loginContainer input {
       display: block;
       margin: 15px auto;
       padding: 12px 20px;
@@ -69,15 +50,14 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
     }
-    .login-container input:focus {
+    #loginContainer input:focus {
       background: rgba(255, 255, 255, 0.2);
       outline: 2px solid #d4a017;
     }
-    .login-container input::placeholder {
+    #loginContainer input::placeholder {
       color: #b2bec3;
     }
-
-    .login-container button, .logout-btn {
+    #loginContainer button {
       padding: 10px 20px;
       font-size: 1em;
       font-weight: 700;
@@ -89,11 +69,10 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .login-container button:hover, .logout-btn:hover {
+    #loginContainer button:hover {
       background: linear-gradient(90deg, #f5c769, #d4a017);
       transform: translateY(-2px);
     }
-
     #error {
       color: #ff6b6b;
       margin: 10px 0;
@@ -101,43 +80,75 @@
       font-size: 0.9em;
     }
 
-    .resource-container {
+    #resourceContainer {
       display: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(212, 160, 23, 0.3);
+      text-align: center;
+      backdrop-filter: blur(5px);
     }
-    .resource-container h2 {
+    #resourceContainer h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.8em;
-      color: rgb(200, 160, 80);
+      color: #f5c769;
       margin-bottom: 20px;
     }
-    .resource-container ul {
+    #resourceContainer ul {
       list-style: none;
       padding: 0;
     }
-    .resource-container li {
+    #resourceContainer li {
       margin: 10px 0;
     }
-    .resource-container a {
-      color: rgb(200, 160, 80);
+    #resourceContainer a {
+      color: #f5c769;
       text-decoration: none;
       font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    #resourceContainer a:hover {
+      color: #d4a017;
+    }
+    #logoutBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 700;
+      color: #0a192f;
+      background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+      border: 3px solid #ff8e8e;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+      cursor: pointer;
       transition: all 0.3s ease;
     }
-    .resource-container a:hover {
-      color: #f5c769;
-      text-decoration: underline;
+    #logoutBtn:hover {
+      background: linear-gradient(90deg, #ff8e8e, #ff6b6b);
+      transform: translateY(-2px);
     }
 
-    @media (max-width: 700px) {
-      h1 { font-size: 2.5em; }
-      .login-container, .resource-container { width: 95%; }
-      .login-container input { width: 90%; }
+    @media (max-width: 500px) {
+      #loginContainer, #resourceContainer {
+        width: 95%;
+        padding: 20px;
+      }
+      #loginContainer h2, #resourceContainer h2 {
+        font-size: 1.5em;
+      }
+      #loginContainer input, #loginContainer button, #logoutBtn {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Resources</h1>
-  <div class="login-container" id="loginContainer">
+  <div id="loginContainer">
+    <h2>Login to Access Resources</h2>
     <form id="loginForm">
       <input type="text" id="userId" placeholder="Enter ID (e.g., CE27001)" required>
       <input type="password" id="password" placeholder="Enter Password" required>
@@ -145,14 +156,16 @@
     </form>
     <div id="error">Invalid ID or Password</div>
   </div>
-  <div class="resource-container" id="resourceContainer">
-    <h2>Available Resources</h2>
+
+  <div id="resourceContainer">
+    <h2>CIVIL-27 Resources</h2>
     <ul>
-      <li><a href="#" target="_blank">Slide 1: Introduction to Civil Engineering (Placeholder)</a></li>
-      <li><a href="#" target="_blank">Slide 2: Structural Analysis (Placeholder)</a></li>
-      <li><a href="#" target="_blank">Slide 3: Geotechnical Engineering (Placeholder)</a></li>
+      <li><a href="https://example.com/notes" target="_blank">Class Notes</a></li>
+      <li><a href="https://example.com/syllabus" target="_blank">Syllabus</a></li>
+      <li><a href="https://example.com/projects" target="_blank">Project Guidelines</a></li>
+      <li><a href="https://example.com/exams" target="_blank">Past Exam Papers</a></li>
     </ul>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
   </div>
 
   <script>
@@ -214,7 +227,7 @@
       { id: "CE27054", text: "ARABY WASIN" },
       { id: "CE27055", text: "ARUNAV BHATTACHARJEE" },
       { id: "CE27056", text: "RAKIB SHIHAB" },
-      { id: "CE27057", text: "TANZILA HASAN" }
+      { id: "CE27057", text: "TANZIMA" }
     ];
 
     const loginContainer = document.getElementById('loginContainer');
@@ -251,6 +264,8 @@
 
       if (validId && validPassword) {
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userId', validId.id);
+        localStorage.setItem('userName', validId.text);
         loginContainer.style.display = 'none';
         resourceContainer.style.display = 'block';
         error.style.display = 'none';
@@ -262,6 +277,8 @@
     // Handle logout
     function logout() {
       localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userName');
       loginContainer.style.display = 'block';
       resourceContainer.style.display = 'none';
       loginForm.reset();
