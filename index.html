@@ -1046,28 +1046,220 @@
         }
       });
     }
+// Name data for side panel and authentication
+const nameData = [
+  { id: "CE27001", text: "SANIA MIRZA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27002", text: "MD.TURJAUN KHAN TURJO", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27003", text: "MD.SAIM KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27004", text: "MOUMITA DAS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27005", text: "RIMJHIM SAHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27006", text: "ANISHA ANOWER", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27007", text: "AKIDA ADNIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27008", text: "JINAT RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27009", text: "MARIA ISLAM SOHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27010", text: "TANMOY DAKUA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27011", text: "FARNAZ RAHMAN MALIHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27012", text: "ADIB MASRUR KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27013", text: "SHAH AHMED RUPAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27014", text: "LABEED LOHANI KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27015", text: "ABDULLAH AL FAHAT BHUIYA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27016", text: "MANTASHA MURSHID", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27017", text: "TASFIA TABASSUM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27018", text: "NAZIFA ZAMAL DIYA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27019", text: "ASHFAK ZAMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27020", text: "TAHMID IBNE HASHEM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg", bloodgroup: "A+" },
+  { id: "CE27021", text: "MD.MUFIDUL ISLAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27022", text: "MARUFA ISLAM SUCHONA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27023", text: "SHAKIB AL HASAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27024", text: "MD.SABBIR UDDIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27025", text: "MAHDI FAIYAZ FARAZI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27026", text: "MD.ALIF HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27027", text: "K.M ZAHINUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27028", text: "HASNAIN AHMED SOUMIC", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27029", text: "FAHMID HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27030", text: "RAMIS JOHRA ISHRA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27031", text: "MD.ZEHAD AL SABA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27032", text: "MD.SAIDUL ISLAM GIAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27033", text: "NAFIS MAHMUD", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27034", text: "MD.EMAD UDDIN EMU", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27035", text: "MD.TAKBIR HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27036", text: "MST.TASFIA FAIRUS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27037", text: "ISHRAT JAHAN RAISA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27038", text: "MD.ASHRAFUL ISLAM SOHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27039", text: "MD.RIADUZZAMAN MOLLA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27041", text: "MD.TOQI TAHMID RAYAT", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27042", text: "AFRIN JAHAN NADIA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27043", text: "SUBORNA RANI ROY", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27045", text: "IREENA ASHRAF", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27047", text: "SADIA ISRAT SOBORNA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27048", text: "KHANDAKAR MEHEDIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27051", text: "TAMANNA ISLAM ANIKA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27052", text: "IMTIAZ AHMAD EMON", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27053", text: "DIBBO BISWAS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27054", text: "ARABY WASIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27055", text: "ARUNAV BHATTACHARJEE", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27056", text: "RAKIB SHIHAB", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+  { id: "CE27057", text: "TANZIMA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" }
+];
 
-    // Side panel functionality
-    document.querySelectorAll('.name').forEach(name => {
-      name.addEventListener('click', () => {
-        const id = name.getAttribute('data-id');
-        const person = nameData.find(data => data.id === id);
-        if (person) {
-          panelId.textContent = person.id;
-          panelName.textContent = person.text;
-          panelBloodGroup.textContent = `Blood Group: ${person.bloodgroup}`;
-          panelImage.src = person.image;
-          sidePanel.classList.add('active');
-          menuBtn.style.display = 'none';
-        }
-      });
-    });
+const sidePanel = document.getElementById('sidePanel');
+const panelId = document.getElementById('panelId');
+const panelName = document.getElementById('panelName');
+const panelBloodGroup = document.getElementById('panelBloodGroup');
+const panelImage = document.getElementById('panelImage');
+const menuPanel = document.getElementById('menuPanel');
+const menuBtn = document.querySelector('.menu-btn');
+const loginContainer = document.getElementById('loginContainer');
+const loginForm = document.getElementById('loginForm');
+const error = document.getElementById('error');
+const loginLink = document.getElementById('loginLink');
+const welcomeLink = document.getElementById('welcomeLink');
+const welcomeMessage = document.getElementById('welcomeMessage');
+const resourcesLink = document.querySelector('a[href="resources.html"]');
 
-    // Close side panel
-    function closePanel() {
-      sidePanel.classList.remove('active');
-      menuBtn.style.display = 'flex';
+// Check authentication state on page load
+window.onload = function() {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const loggedInUserId = localStorage.getItem('loggedInUserId');
+  if (isAuthenticated && loggedInUserId) {
+    const user = nameData.find(data => data.id === loggedInUserId);
+    if (user) {
+      loginLink.style.display = 'none';
+      welcomeLink.style.display = 'block';
+      welcomeLink.textContent = `Welcome, ${user.text}`;
+      welcomeLink.onclick = logout;
+      resourcesLink.style.pointerEvents = 'auto';
+      resourcesLink.style.opacity = '1';
     }
+  } else {
+    resourcesLink.style.pointerEvents = 'none';
+    resourcesLink.style.opacity = '0.5';
+    resourcesLink.onclick = (e) => {
+      e.preventDefault();
+      alert('Please log in to access Resources.');
+      showLogin();
+    };
+  }
+  // Check if login was just performed
+  if (localStorage.getItem('justLoggedIn') === 'true') {
+    const user = nameData.find(data => data.id === loggedInUserId);
+    if (user) {
+      welcomeMessage.textContent = `Welcome, ${user.text}`;
+      welcomeMessage.style.display = 'block';
+      setTimeout(() => {
+        welcomeMessage.style.display = 'none';
+        localStorage.removeItem('justLoggedIn');
+      }, 3500);
+    }
+  }
+};
+
+// Toggle menu panel
+function toggleMenu() {
+  menuPanel.classList.toggle('active');
+  if (menuPanel.classList.contains('active')) {
+    menuBtn.style.display = 'none';
+  } else {
+    menuBtn.style.display = 'flex';
+  }
+}
+
+// Show login form
+function showLogin() {
+  loginContainer.style.display = 'block';
+  menuPanel.classList.remove('active');
+  menuBtn.style.display = 'flex';
+}
+
+// Handle login
+loginForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const userId = document.getElementById('userId').value.trim().toUpperCase();
+  const password = document.getElementById('password').value.trim();
+  const user = nameData.find(data => data.id === userId);
+
+  if (user && password === 'civil27') { // Updated password check
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('loggedInUserId', userId);
+    localStorage.setItem('justLoggedIn', 'true');
+    loginContainer.style.display = 'none';
+    loginLink.style.display = 'none';
+    welcomeLink.style.display = 'block';
+    welcomeLink.textContent = `Welcome, ${user.text}`;
+    welcomeLink.onclick = logout;
+    welcomeMessage.textContent = `Welcome, ${user.text}`;
+    welcomeMessage.style.display = 'block';
+    setTimeout(() => {
+      welcomeMessage.style.display = 'none';
+    }, 3500);
+    error.style.display = 'none';
+    resourcesLink.style.pointerEvents = 'auto';
+    resourcesLink.style.opacity = '1';
+    resourcesLink.onclick = null; // Remove the login prompt
+  } else {
+    error.style.display = 'block';
+  }
+});
+
+// Logout function
+function logout() {
+  localStorage.removeItem('isAuthenticated');
+  localStorage.removeItem('loggedInUserId');
+  localStorage.removeItem('justLoggedIn');
+  loginLink.style.display = 'block';
+  welcomeLink.style.display = 'none';
+  loginContainer.style.display = 'none';
+  error.style.display = 'none';
+  resourcesLink.style.pointerEvents = 'none';
+  resourcesLink.style.opacity = '0.5';
+  resourcesLink.onclick = (e) => {
+    e.preventDefault();
+    alert('Please log in to access Resources.');
+    showLogin();
+  };
+}
+
+// Search functionality
+function searchNames() {
+  const searchValue = document.getElementById('searchBar').value.toLowerCase();
+  const names = document.querySelectorAll('.name');
+  names.forEach(name => {
+    const nameText = name.querySelector('.name-text').textContent.toLowerCase();
+    const nameId = name.querySelector('.name-id').textContent.toLowerCase();
+    if (nameText.includes(searchValue) || nameId.includes(searchValue)) {
+      name.style.display = 'flex';
+    } else {
+      name.style.display = 'none';
+    }
+  });
+}
+
+// Side panel functionality
+document.querySelectorAll('.name').forEach(name => {
+  name.addEventListener('click', () => {
+    const id = name.getAttribute('data-id');
+    const person = nameData.find(data => data.id === id);
+    if (person) {
+      panelId.textContent = person.id;
+      panelName.textContent = person.text;
+      panelBloodGroup.textContent = `Blood Group: ${person.bloodgroup}`;
+      panelImage.src = person.image;
+      sidePanel.classList.add('active');
+      menuBtn.style.display = 'none';
+    }
+  });
+});
+
+// Close side panel
+function closePanel() {
+  sidePanel.classList.remove('active');
+  menuBtn.style.display = 'flex';
+}
   </script>
 </body>
 </html>
