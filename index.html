@@ -223,29 +223,29 @@
             transform: scale(1.03);
         }
         .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #d4a017;
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            font-size: 1.4em;
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s;
-            z-index: 1100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #d4a017;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.4em;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
         .close-btn:hover {
-            background: #f5c769;
-            transform: rotate(90deg);
-        }
+    background: #f5c769;
+    transform: rotate(90deg);
+}
         .panel-id, .panel-name, .panel-bloodgroup {
             font-family: 'Quicksand', sans-serif;
             font-size: 1.1em;
@@ -263,36 +263,40 @@
         }
 
         .menu-btn {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background: #d4a017;
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            font-size: 1.4em;
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s;
-            z-index: 1100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #d4a017;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4em;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
         .menu-btn:hover {
-            background: #f5c769;
-            transform: scale(1.1);
-        }
+    background: #f5c769;
+    transform: scale(1.1);
+}
         .menu-btn::before {
-            content: '⋮';
-            font-size: 2em;
-            line-height: 1;
-        }
-        .side-panel.active ~ .menu-btn {
-            display: none;
-        }
+    content: '⋮';
+    font-size: 2em;
+    line-height: 1;
+}
+        /* Updated CSS to hide menu-btn when side-panel is active */
+.side-panel.active ~ .menu-btn {
+    display: none;
+}
+.side-panel.active .close-btn {
+    display: flex; /* Ensure close-btn is visible when side-panel is active */
+}
 
         .menu-panel {
             position: fixed;
