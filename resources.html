@@ -22,9 +22,6 @@
             background-size: cover;
             font-family: 'Quicksand', 'Georgia', 'Times New Roman', Times, serif;
             color: #f5f6f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         #monogram-container {
@@ -35,7 +32,6 @@
             max-width: 150px;
             width: 60%;
             height: auto;
-            display: inline-block;
             border-radius: 10px;
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s;
@@ -49,8 +45,7 @@
             font-size: 3.5em;
             font-weight: 400;
             letter-spacing: 3px;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin: 10px 0 20px;
             text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
             text-transform: uppercase;
             text-align: center;
@@ -61,8 +56,144 @@
             background-clip: text;
         }
 
-        .login-container {
+        .resources-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .resource-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 80%, rgba(200, 160, 80, 0.2) 100%);
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: rgb(200, 160, 80);
+            transition: all 0.3s ease;
+        }
+        .resource-item:hover {
+            background: linear-gradient(90deg, rgba(200, 160, 80, 0.3), rgba(220, 180, 100, 0.4));
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(200, 160, 80, 0.5);
+        }
+        .resource-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #d4a017;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.4em;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-btn:hover {
+            background: #f5c769;
+            transform: scale(1.1);
+        }
+        .menu-btn::before {
+            content: '⋮';
+            font-size: 2em;
+            line-height: 1;
+        }
+
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(10, 25, 47, 0.95);
+            box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
+            transition: right 0.4s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+        }
+        .menu-panel.active {
+            right: 0;
+        }
+        .menu-panel a {
+            display: block;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: rgb(200, 160, 80);
+            text-decoration: none;
+            margin: 10px 0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .menu-panel a:hover {
+            background: rgba(200, 160, 80, 0.3);
+            color: #fff;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d4a017;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.4em;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
             display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            background: #f5c769;
+            transform: rotate(90deg);
+        }
+        .menu-panel.active .close-btn {
+            display: flex;
+        }
+        .menu-panel.active ~ .menu-btn {
+            display: none;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1200;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-modal-content {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 25px;
             padding: 30px;
@@ -72,9 +203,8 @@
             border: 2px solid rgba(212, 160, 23, 0.3);
             backdrop-filter: blur(5px);
             text-align: center;
-            margin: 20px auto;
         }
-        .login-container input {
+        .login-modal-content input {
             display: block;
             margin: 15px auto;
             padding: 12px 20px;
@@ -87,11 +217,11 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
-        .login-container input:focus {
+        .login-modal-content input:focus {
             background: rgba(255, 255, 255, 0.2);
             outline: 2px solid #d4a017;
         }
-        .login-container button {
+        .login-modal-content button {
             padding: 10px 20px;
             font-size: 1em;
             font-weight: 700;
@@ -103,51 +233,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .login-container button:hover {
+        .login-modal-content button:hover {
             background: linear-gradient(90deg, #f5c769, #d4a017);
             transform: translateY(-2px);
         }
-        #loginError {
+        #modalError {
             color: #ff6b6b;
             margin: 10px 0;
             display: none;
             font-size: 0.9em;
-        }
-
-        .resource-container {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 25px;
-            padding: 30px;
-            max-width: 900px;
-            width: 90%;
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(212, 160, 23, 0.3);
-            margin: 20px auto;
-            backdrop-filter: blur(5px);
-            display: none;
-        }
-        .resource-container h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2em;
-            color: #f5c769;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .resource-container ul {
-            list-style: none;
-            padding: 0;
-        }
-        .resource-container ul li {
-            margin: 10px 0;
-        }
-        .resource-container ul li a {
-            color: rgb(200, 160, 80);
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-        .resource-container ul li a:hover {
-            color: #f5c769;
         }
 
         .welcome-message {
@@ -168,10 +262,100 @@
             opacity: 1;
         }
 
-        @media (max-width: 700px) {
-            h1 { font-size: 2.5em; }
-            .login-container, .resource-container { width: 95%; }
-            #monogram-container img { max-width: 80vw; }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .resources-container {
+                max-width: 95vw;
+                padding: 15px;
+            }
+            .resource-item {
+                font-size: 1em;
+                padding: 12px;
+            }
+            #monogram-container img {
+                max-width: 120px;
+            }
+            h1 {
+                font-size: 2.8em;
+                letter-spacing: 2px;
+            }
+            .menu-panel {
+                width: 70vw;
+            }
+            .menu-btn, .close-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .resources-container {
+                max-width: 90vw;
+                padding: 10px;
+                margin: 20px auto;
+            }
+            .resource-item {
+                font-size: 0.9em;
+                padding: 10px;
+                margin: 10px 0;
+            }
+            #monogram-container img {
+                max-width: 100px;
+            }
+            h1 {
+                font-size: 2em;
+                letter-spacing: 1.5px;
+                margin: 10px 0;
+            }
+            .menu-panel {
+                width: 100vw;
+                padding: 15px;
+            }
+            .menu-panel a {
+                font-size: 1em;
+                padding: 10px;
+            }
+            .menu-btn, .close-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1em;
+                top: 10px;
+                left: 10px; /* Keep menu-btn in top-left */
+            }
+            .login-modal-content {
+                width: 85%;
+                padding: 20px;
+            }
+            .login-modal-content input {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+            .login-modal-content button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+            .welcome-message {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .resources-container {
+                max-width: 1000px;
+                padding: 30px;
+            }
+            .resource-item {
+                font-size: 1.2em;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 4em;
+            }
+            #monogram-container img {
+                max-width: 180px;
+            }
         }
     </style>
 </head>
@@ -179,29 +363,50 @@
     <div id="monogram-container">
         <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/Military_Institute_of_Science_and_Technology_Monogram.svg.png" alt="MIST Monogram">
     </div>
-    <h1>Resources - CIVIL-27</h1>
+    <h1>Resources</h1>
 
-    <div id="loginContainer" class="login-container">
-        <form id="loginForm">
-            <input type="text" id="userId" placeholder="Enter ID (e.g., CE27001)" required>
-            <input type="password" id="password" placeholder="Enter Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div id="loginError">Invalid ID or Password</div>
+    <button class="menu-btn" onclick="toggleMenu()"></button>
+    <div id="menuPanel" class="menu-panel">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <a id="homeLink" href="index.html" target="_blank">Home</a>
+        <a id="loginLink" href="#" onclick="showLogin()">Log In</a>
+        <a id="logoutLink" href="#" onclick="logout()" style="display: none;">Log Out</a>
     </div>
 
-    <div id="resourceContainer" class="resource-container">
-        <h2>Available Resources</h2>
-        <ul>
-            <li><a href="https://example.com/resource1" target="_blank">Resource 1</a></li>
-            <li><a href="https://example.com/resource2" target="_blank">Resource 2</a></li>
-            <li><a href="https://example.com/resource3" target="_blank">Resource 3</a></li>
-        </ul>
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <form id="loginForm">
+                <input type="text" id="modalUserId" placeholder="Enter ID (e.g., CE27001)" required>
+                <input type="password" id="modalPassword" placeholder="Enter Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="modalError">Invalid ID or Password</div>
+            <button onclick="closeLoginModal()">Close</button>
+        </div>
     </div>
 
     <div id="welcomeMessage" class="welcome-message"></div>
 
+    <div class="resources-container">
+        <div class="resource-item">
+            <a href="https://mist.ac.bd/department/ce" target="_blank">MIST Civil Engineering Department</a>
+        </div>
+        <div class="resource-item">
+            <a href="#" target="_blank">CIVIL-27 Course Materials (Placeholder)</a>
+        </div>
+        <div class="resource-item">
+            <a href="#" target="_blank">Structural Analysis Notes (Placeholder)</a>
+        </div>
+        <div class="resource-item">
+            <a href="#" target="_blank">Geotechnical Engineering Resources (Placeholder)</a>
+        </div>
+        <div class="resource-item">
+            <a href="#" target="_blank">Project Reports Archive (Placeholder)</a>
+        </div>
+    </div>
+
     <script>
+        // Name data for authentication (same as index.html)
         const nameData = [
             { id: "CE27001", text: "SANIA MIRZA" },
             { id: "CE27002", text: "MD.TURJAUN KHAN TURJO" },
@@ -245,71 +450,94 @@
             { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB" },
             { id: "CE27041", text: "MD.TOQI TAHMID RAYAT" },
             { id: "CE27042", text: "AFRIN JAHAN NADIA" },
-            { id: "CE27043", text: "SUBORNA RANI ROY" },
-            { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI" },
-            { id: "CE27045", text: "IREENA ASHRAF" },
-            { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM" },
-            { id: "CE27047", text: "SADIA ISRAT SOBORNA" },
+            { id: "CE27043", text: "SADIA ISRAT SOBORNA },
+            { id: "CE27047", text: "SUBORNA RANI ROY" },
             { id: "CE27048", text: "KHANDAKAR MEHEDIN" },
             { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR" },
-            { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN" },
-            { id: "CE27051", text: "TAMANNA ISLAM ANIKA" },
-            { id: "CE27052", text: "IMTIAZ AHMAD EMON" },
-            { id: "CE27053", text: "DIBBO BISWAS" },
-            { id: "CE27054", text: "ARABY WASIN" },
-            { id: "CE27055", text: "ARUNAV BHATTACHARJEE" },
-            { id: "CE27056", text: "RAKIB SHIHAB" },
-            { id: "CE27057", text: "TANZIMA" }
+            { id: "CE27050", text: "SHAH MUSHFIQ" },
+            { id: "CE27051", text: "TANZIMA" },
+            { id: "CE27057", text: "TAMANNA" }
+            // Add more IDs as needed
         ];
 
-        const loginContainer = document.getElementById('loginContainer');
-        const resourceContainer = document.getElementById('resourceContainer');
+        const menuPanel = document.getElementById('menuPanel');
+        const loginModal = document.getElementById('loginModal');
         const loginForm = document.getElementById('loginForm');
-        const loginError = document.getElementById('loginError');
+        const modalError = document.getElementById('modalError');
         const welcomeMessage = document.getElementById('welcomeMessage');
+        const loginLink = document.getElementById('loginLink');
+        const logoutLink = document.getElementById('logoutLink');
 
-        // Check authentication on page load
+        // Check authentication state on load
         window.onload = function() {
             const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
             const userId = localStorage.getItem('userId');
             if (isAuthenticated && userId) {
                 const person = nameData.find(data => data.id === userId);
                 if (person) {
-                    resourceContainer.style.display = 'block';
-                    welcomeMessage.textContent = `Welcome, ${person.text}`;
-                    welcomeMessage.classList.add('show');
-                    setTimeout(() => {
-                        welcomeMessage.classList.remove('show');
-                    }, 3000);
-                } else {
-                    loginContainer.style.display = 'block';
+                    loginLink.textContent = `Welcome, ${person.text}`;
+                    loginLink.onclick = null;
+                    loginLink.style.pointerEvents = 'none';
+                    logoutLink.style.display = 'block';
                 }
-            } else {
-                loginContainer.style.display = 'block';
             }
         };
 
-        // Handle login form submission
+        // Toggle menu panel
+        function toggleMenu() {
+            menuPanel.classList.toggle('active');
+        }
+
+        // Show login modal
+        function showLogin() {
+            loginModal.style.display = 'flex';
+        }
+
+        // Close login modal
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+            modalError.style.display = 'none';
+            loginForm.reset();
+        }
+
+        // Handle login
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const userId = document.getElementById('userId').value.trim().toUpperCase();
-            const password = document.getElementById('password').value;
+            const userId = document.getElementById('modalUserId').value.trim();
+            const password = document.getElementById('modalPassword').value.trim();
 
+            // Simple client-side validation (for demo purposes)
             const person = nameData.find(data => data.id === userId);
-            if (person && password === 'civil27') {
+            if (person && password === 'password123') { // Replace with actual authentication logic
                 localStorage.setItem('isAuthenticated', 'true');
                 localStorage.setItem('userId', userId);
-                loginContainer.style.display = 'none';
-                resourceContainer.style.display = 'block';
-                welcomeMessage.textContent = `Welcome, ${person.text}`;
+                loginModal.style.display = 'none';
+                loginForm.reset();
+                loginLink.textContent = `Welcome, ${person.text}`;
+                loginLink.onclick = null;
+                loginLink.style.pointerEvents = 'none';
+                logoutLink.style.display = 'block';
+                welcomeMessage.textContent = `Welcome, ${person.text}!`;
                 welcomeMessage.classList.add('show');
-                setTimeout(() => {
-                    welcomeMessage.classList.remove('show');
-                }, 3000);
+                setTimeout(() => welcomeMessage.classList.remove('show'), 3000);
             } else {
-                loginError.style.display = 'block';
+                modalError.style.display = 'block';
             }
         });
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isAuthenticated');
+            localStorage.removeItem('userId');
+            loginLink.textContent = 'Log In';
+            loginLink.onclick = showLogin;
+            loginLink.style.pointerEvents = 'auto';
+            logoutLink.style.display = 'none';
+            welcomeMessage.textContent = 'Logged out successfully!';
+            welcomeMessage.classList.add('show');
+            setTimeout(() => welcomeMessage.classList.remove('show'), 3000);
+            toggleMenu();
+        }
     </script>
 </body>
 </html>
