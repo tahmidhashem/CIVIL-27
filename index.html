@@ -85,19 +85,22 @@
             transform: translateY(-2px);
         }
 
+        .search-container {
+            text-align: center;
+            margin: 30px auto;
+        }
         #searchBar {
-            display: block;
-            margin: 30px auto 28px auto;
             padding: 16px 24px;
             font-size: 1.2em;
             width: 65%;
-            max-width: 450px;
-            border-radius: 40px;
+            max-width: 400px;
+            border-radius: 40px 0 0 40px;
             border: none;
             background: rgba(255, 255, 255, 0.1);
             color: #f5f6f5;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            outline: none;
         }
         #searchBar:focus {
             background: rgba(255, 255, 255, 0.2);
@@ -106,6 +109,21 @@
         }
         #searchBar::placeholder {
             color: #b2bec3;
+        }
+        #searchButton {
+            padding: 16px 20px;
+            font-size: 1.2em;
+            border-radius: 0 40px 40px 0;
+            border: none;
+            background: #d4a017;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        #searchButton:hover {
+            background: #f5c769;
+            transform: translateY(-2px);
         }
 
         .mine {
@@ -237,7 +255,7 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
             transition: all 0.3s;
             z-index: 1100;
-            display: none; /* Hidden by default */
+            display: none;
             align-items: center;
             justify-content: center;
         }
@@ -289,9 +307,8 @@
             font-size: 2em;
             line-height: 1;
         }
-        /* Ensure close-btn shows when side-panel is active */
         .side-panel.active .close-btn {
-            display: flex; /* Show close-btn when side-panel is active */
+            display: flex;
         }
 
         .menu-panel {
@@ -302,7 +319,7 @@
             height: 100vh;
             background: rgba(10, 25, 47, 0.95);
             box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
-            transition: right 0.4s ease-in-out;
+            transition: right: 0.4s ease-in-out;
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -328,7 +345,6 @@
             color: #fff;
         }
 
-        /* Login Modal Styles */
         .login-modal {
             display: none;
             position: fixed;
@@ -341,7 +357,7 @@
             justify-content: center;
             align-items: center;
         }
-        .login-modal-content {
+        .login-wrapper {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 25px;
             padding: 30px;
@@ -352,7 +368,7 @@
             backdrop-filter: blur(5px);
             text-align: center;
         }
-        .login-modal-content input {
+        .login-wrapper input {
             display: block;
             margin: 15px auto;
             padding: 12px 20px;
@@ -365,11 +381,11 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
-        .login-modal-content input:focus {
+        .login-wrapper input:focus {
             background: rgba(255, 255, 255, 0.2);
             outline: 2px solid #d4a017;
         }
-        .login-modal-content button {
+        .login-wrapper button {
             padding: 10px 20px;
             font-size: 1em;
             font-weight: 700;
@@ -381,7 +397,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .login-modal-content button:hover {
+        .login-wrapper button:hover {
             background: linear-gradient(90deg, #f5c769, #d4a017);
             transform: translateY(-2px);
         }
@@ -392,7 +408,6 @@
             font-size: 0.9em;
         }
 
-        /* Welcome Message Styles */
         .welcome-message {
             position: fixed;
             top: 20px;
@@ -423,7 +438,8 @@
             .mine { flex-direction: column; align-items: center; }
             .name-box { width: 95%; min-height: unset; }
             .menu-panel { width: 100vw; }
-            #searchBar { width: 90%; font-size: 1.1em; }
+            #searchBar { width: 70%; font-size: 1.1em; }
+            #searchButton { padding: 16px 15px; }
             .name img { width: 38px; height: 38px; }
             .side-panel { width: 100vw; }
             h1 { font-size: 2.5em; }
@@ -439,18 +455,18 @@
     <div id="link-container">
         <a id="website-link" href="https://mist.ac.bd/department/ce" target="_blank">Visit CE Department</a>
     </div>
-    <input type="text" id="searchBar" onkeyup="searchNames()" placeholder="Search by name or ID...">
-
-    <!-- Three-dot menu button -->
-    <button class="menu-btn" onclick="toggleMenu()"></button>
-
-    <!-- Menu panel -->
-    <div id="menuPanel" class="menu-panel">
-        <a id="resourcesLink" href="resources.html" target="_blank">Resources</a>
-        <a id="loginLink" href="#" onclick="showLogin()">Log In</a>
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search by name or ID...">
+        <button id="searchButton">Search</button>
     </div>
 
-    <!-- Side Panel -->
+    <button class="menu-btn" onclick="toggleMenu()"></button>
+
+    <div id="menuPanel" class="menu-panel">
+        <a id="resourcesLink" href="resources.html" target="_blank">Resources</a>
+        <a id="loginLink" href="#" onclick="showLogin()">Login</a>
+    </div>
+
     <div id="sidePanel" class="side-panel">
         <button class="close-btn" onclick="closePanel()">×</button>
         <div class="panel-id" id="panelId"></div>
@@ -459,9 +475,8 @@
         <img id="panelImage" src="" alt="Selected Person">
     </div>
 
-    <!-- Login Modal -->
     <div id="loginModal" class="login-modal">
-        <div class="login-modal-content">
+        <div class="login-wrapper">
             <form id="loginForm">
                 <input type="text" id="modalUserId" placeholder="Enter ID (e.g., CE27001)" required>
                 <input type="password" id="modalPassword" placeholder="Enter Password" required>
@@ -472,7 +487,6 @@
         </div>
     </div>
 
-    <!-- Welcome Message -->
     <div id="welcomeMessage" class="welcome-message"></div>
 
     <div class="mine">
@@ -604,14 +618,14 @@
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27019">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ASHFAK ZAMAN" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg alt="ASHFAK ZAMAN" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27019</span>
                     <span class="name-text">ASHFAK ZAMAN</span>
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" data-bloodgroup="A+" data-id="CE27020">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" alt="TAHMID IBNE HASHEM" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/20240402/main_125927.jpg" alt="TAHMID IBNE HASHEM" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27020</span>
                     <span class="name-text">TAHMID IBNE HASHEM</span>
@@ -660,10 +674,10 @@
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27027">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="K.M ZAHINUR RAHMAN" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="K.M ZAHINUR" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27027</span>
-                    <span class="name-text">K.M ZAHINUR RAHMAN</span>
+                    <span class="name-text">K.M ZAHINUR</span>
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27028">
@@ -688,10 +702,10 @@
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27031">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZEHAD AL SABA" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZEHAD RIAM" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27031</span>
-                    <span class="name-text">MD.ZEHAD AL SABA</span>
+                    <span class="name-text">MD.ZEHAD RIAM</span>
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27032">
@@ -711,7 +725,7 @@
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27034">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.EMAD UDDIN EMU" loading="lazy">
                 <div class="name-content">
-                    <span class="name-id">CE27034</span>
+                    Baj_class="name-id">CE27034</span>
                     <span class="name-text">MD.EMAD UDDIN EMU</span>
                 </div>
             </div>
@@ -835,7 +849,8 @@
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27052">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="IMTIAZ AHMAD EMON" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg loading="lazy">
+                alt="IMTIAZ AHMAD EMON"
                 <div class="name-content">
                     <span class="name-id">CE27052</span>
                     <span class="name-text">IMTIAZ AHMAD EMON</span>
@@ -880,7 +895,6 @@
     </div>
 
     <script>
-        // Name data for side panel and authentication
         const nameData = [
             { id: "CE27001", text: "SANIA MIRZA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27002", text: "MD.TURJAUN KHAN TURJO", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -910,9 +924,9 @@
             { id: "CE27026", text: "MD.ALIF HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27027", text: "K.M ZAHINUR RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27028", text: "HASNAIN AHMED SOUMIC", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-            { id: "CE27029", text: "FAHMID HOSSAIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
+            { id: "CE27029", text: "FAHMID HOSSAIN", image: "https://raw.githubusercontent.com/tawmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27030", text: "RAMIS JOHRA ISHRA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-            { id: "CE27031", text: "MD.ZEHAD AL SABA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
+            { id: "CE27031", text: "MD.ZEHAD RIAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27032", text: "MD.SAIDUL ISLAM GIAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27033", text: "NAFIS MAHMUD", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27034", text: "MD.EMAD UDDIN EMU", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -955,7 +969,6 @@
         const loginLink = document.getElementById('loginLink');
         const resourcesLink = document.getElementById('resourcesLink');
 
-        // Check authentication state on load
         window.onload = function() {
             const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
             const userId = localStorage.getItem('userId');
@@ -965,92 +978,143 @@
                     loginLink.textContent = `Welcome, ${person.text}`;
                     loginLink.onclick = null;
                     loginLink.style.pointerEvents = 'none';
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutLink';
+                    logoutLink.textContent = 'Logout';
+                    menuPanel.appendChild(logoutLink);
+                    logoutLink.addEventListener('click', logout);
                 }
             }
         };
 
-        // Open side panel and hide menu button
-        document.querySelectorAll('.name').forEach(name => {
-            name.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const person = nameData.find(data => data.id === id);
-                if (person) {
-                    panelId.textContent = `ID: ${person.id}`;
-                    panelName.textContent = person.text;
-                    panelBloodGroup.textContent = `Blood Group: ${person.bloodgroup || 'Not Available'}`;
-                    panelImage.src = person.image;
-                    sidePanel.classList.add('active');
-                    menuBtn.style.display = 'none'; // Hide menu button when side panel opens
-                }
-            });
-        });
-
-        // Close side panel and show menu button
-        function closePanel() {
-            sidePanel.classList.remove('active');
-            menuBtn.style.display = 'flex'; // Show menu button when side panel closes
-        }
-
-        // Toggle menu panel
-        function toggleMenu() {
-            menuPanel.classList.toggle('active');
-        }
-
-        // Show login modal
-        function showLogin() {
-            loginModal.style.display = 'flex';
-            menuPanel.classList.remove('active');
-        }
-
-        // Close login modal
-        function closeLoginModal() {
-            loginModal.style.display = 'none';
-            modalError.style.display = 'none';
-            loginForm.reset();
-        }
-
-        // Handle login form submission
-        loginForm.addEventListener('submit', function(e) {
+        function logout(e) {
             e.preventDefault();
-            const userId = document.getElementById('modalUserId').value.trim().toUpperCase();
-            const password = document.getElementById('modalPassword').value;
+            localStorage.removeItem('isAuthenticated');
+            localStorage.removeItem('userId');
+            loginLink.textContent = 'Login';
+            loginLink.onclick = showLogin;
+            loginLink.style.pointerEvents = 'auto';
+            const logoutLink = document.getElementById('logoutLink');
+if (logoutLink) {
+    logoutLink.remove();
+}
+welcomeMessage.textContent = 'You have logged out';
+welcomeMessage.classList.add('show');
+setTimeout(() => {
+    welcomeMessage.classList.remove('show');
+}, 3000);
+menuPanel.classList.remove('active');
+menuBtn.style.display = 'flex';
+}
 
-            const person = nameData.find(data => data.id === userId);
-            if (person && password === 'civil27') {
-                localStorage.setItem('isAuthenticated', 'true');
-                localStorage.setItem('userId', userId);
-                loginModal.style.display = 'none';
-                loginLink.textContent = `Welcome, ${person.text}`;
-                loginLink.onclick = null;
-                loginLink.style.pointerEvents = 'none';
-                welcomeMessage.textContent = `Welcome, ${person.text}`;
-                welcomeMessage.classList.add('show');
-                setTimeout(() => {
-                    welcomeMessage.classList.remove('show');
-                }, 3000);
-            } else {
-                modalError.style.display = 'block';
-            }
-        });
+function showLogin() {
+    loginModal.style.display = 'flex';
+    modalError.style.display = 'none';
+    loginForm.reset();
+    menuPanel.classList.remove('active');
+    menuBtn.style.display = 'flex';
+}
 
-        // Search names
-        function searchNames() {
-            const searchValue = document.getElementById('searchBar').value.toLowerCase();
-            const names = document.querySelectorAll('.name');
-            names.forEach(name => {
-                const nameText = name.querySelector('.name-text').textContent.toLowerCase();
-                const idText = name.querySelector('.name-id').textContent.toLowerCase();
-                name.parentElement.style.display = (nameText.includes(searchValue) || idText.includes(searchValue)) ? '' : 'none';
-            });
+function closeLoginModal() {
+    loginModal.style.display = 'none';
+}
+
+function toggleMenu() {
+    menuPanel.classList.toggle('active');
+    if (menuPanel.classList.contains('active')) {
+        menuBtn.style.display = 'none';
+    } else {
+        menuBtn.style.display = 'flex';
+    }
+}
+
+function closePanel() {
+    sidePanel.classList.remove('active');
+}
+
+document.querySelectorAll('.name').forEach(name => {
+    name.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        const image = this.getAttribute('data-image');
+        const bloodgroup = this.getAttribute('data-bloodgroup');
+        const person = nameData.find(data => data.id === id);
+
+        if (person) {
+            panelId.textContent = `ID: ${person.id}`;
+            panelName.textContent = person.text;
+            panelBloodGroup.textContent = `Blood Group: ${bloodgroup || 'Not Available'}`;
+            panelImage.src = image;
+            sidePanel.classList.add('active');
         }
+    });
+});
 
-        // Prevent direct access to resources if not authenticated
-        resourcesLink.addEventListener('click', function(e) {
-            if (!localStorage.getItem('isAuthenticated')) {
-                e.preventDefault();
-                showLogin();
-            }
-        });
-    </script>
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const userId = document.getElementById('modalUserId').value.trim().toUpperCase();
+    const password = document.getElementById('modalPassword').value;
+
+    const person = nameData.find(data => data.id === userId);
+    if (person && password === 'civil27') {
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userId', userId);
+        loginModal.style.display = 'none';
+        loginLink.textContent = `Welcome, ${person.text}`;
+        loginLink.onclick = null;
+        loginLink.style.pointerEvents = 'none';
+
+        const logoutLink = document.createElement('a');
+        logoutLink.href = '#';
+        logoutLink.id = 'logoutLink';
+        logoutLink.textContent = 'Logout';
+        menuPanel.appendChild(logoutLink);
+        logoutLink.addEventListener('click', logout);
+
+        welcomeMessage.textContent = `Welcome, ${person.text}`;
+        welcomeMessage.classList.add('show');
+        setTimeout(() => {
+            welcomeMessage.classList.remove('show');
+        }, 3000);
+        menuPanel.classList.remove('active');
+        menuBtn.style.display = 'flex';
+    } else {
+        modalError.style.display = 'block';
+    }
+});
+
+function searchNames() {
+    const searchValue = document.getElementById('searchBar').value.toLowerCase();
+    const names = document.querySelectorAll('.name');
+    names.forEach(name => {
+        const nameText = name.querySelector('.name-text').textContent.toLowerCase();
+        const idText = name.querySelector('.name-id').textContent.toLowerCase();
+        name.parentElement.style.display = (nameText.includes(searchValue) || idText.includes(searchValue)) ? '' : 'none';
+    });
+}
+
+const searchButton = document.getElementById('searchButton');
+if (searchButton) {
+    searchButton.addEventListener('click', searchNames);
+} else {
+    console.error('Search button with ID "searchButton" not found.');
+}
+
+const searchBar = document.getElementById('searchBar');
+if (searchBar) {
+    searchBar.addEventListener('input', searchNames);
+} else {
+    console.error('Search bar with ID "searchBar" not found.');
+}
+
+resourcesLink.addEventListener('click', function(e) {
+    if (!localStorage.getItem('isAuthenticated')) {
+        e.preventDefault();
+        showLogin();
+        menuPanel.classList.remove('active');
+        menuBtn.style.display = 'flex';
+    }
+});
+</script>
 </body>
 </html>
