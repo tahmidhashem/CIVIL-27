@@ -66,13 +66,10 @@
             border: 2px solid rgba(212, 160, 23, 0.3);
             backdrop-filter: blur(5px);
             z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
         }
 
         .resource-item {
-            width: 100%;
             margin: 15px 0;
             padding: 15px;
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 80%, rgba(200, 160, 80, 0.2) 100%);
@@ -81,7 +78,6 @@
             font-weight: 600;
             color: rgb(200, 160, 80);
             transition: all 0.3s ease;
-            text-align: center;
         }
         .resource-item:hover {
             background: linear-gradient(90deg, rgba(200, 160, 80, 0.3), rgba(220, 180, 100, 0.4));
@@ -155,7 +151,6 @@
             margin: 10px 0;
             border-radius: 10px;
             transition: all 0.3s ease;
-            text-align: center;
         }
         .menu-panel a:hover {
             background: rgba(200, 160, 80, 0.3);
@@ -268,103 +263,6 @@
         .welcome-message.show {
             opacity: 1;
         }
-
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .resources-container {
-                max-width: 90vw;
-                padding: 15px;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 12px;
-            }
-            #monogram-container img {
-                max-width: 150px;
-            }
-            h1 {
-                font-size: 3.5em;
-                letter-spacing: 2px;
-            }
-            .menu-panel {
-                width: 250px;
-                right: -250px;
-            }
-            .menu-btn, .close-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4em;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .resources-container {
-                max-width: 90vw;
-                padding: 10px;
-                margin: 20px auto;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 10px;
-                margin: 10px 0;
-            }
-            #monogram-container img {
-                max-width: 150px;
-            }
-            h1 {
-                font-size: 3.5em;
-                letter-spacing: 1.5px;
-                margin: 10px 0;
-            }
-            .menu-panel {
-                width: 250px;
-                right: -250px;
-            }
-            .menu-panel a {
-                font-size: 1.2em;
-                padding: 10px;
-            }
-            .menu-btn, .close-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4em;
-                top: 15px;
-                left: 15px;
-            }
-            .login-modal-content {
-                width: 85%;
-                padding: 20px;
-            }
-            .login-modal-content input {
-                font-size: 1.1em;
-                padding: 10px 15px;
-            }
-            .login-modal-content button {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-            .welcome-message {
-                font-size: 1.2em;
-                padding: 8px 15px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .resources-container {
-                max-width: 900px;
-                padding: 20px;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 3.5em;
-            }
-            #monogram-container img {
-                max-width: 150px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -452,21 +350,27 @@
             { id: "CE27034", text: "MD.EMAD UDDIN EMU" },
             { id: "CE27035", text: "MD.TAKBIR HOSSAIN" },
             { id: "CE27036", text: "MST.TASFIA FAIRUS" },
-            { id: "CE27037", text: "ISHRAT JAHAN" },
-            { id: "CE27038", text: "MD.ASHRAFUL ISLAM" },
-            { id: "CE27039", text: "MD.RIADUZZAMAN" },
-            { id: "CE27040", text: "MD.SAYEED HOSSAIN" },
-            { id: "CE27041", text: "MD.TOQI TAHMID" },
-            { id: "CE27042", text: "AFRIN JAHAN" },
-            { id: "CE27043", text: "SUBORNA RANI" },
-            { id: "CE27044", text: "MD.ZAKIUL ISLAM" },
+            { id: "CE27037", text: "ISHRAT JAHAN RAISA" },
+            { id: "CE27038", text: "MD.ASHRAFUL ISLAM SOHAN" },
+            { id: "CE27039", text: "MD.RIADUZZAMAN MOLLA" },
+            { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB" },
+            { id: "CE27041", text: "MD.TOQI TAHMID RAYAT" },
+            { id: "CE27042", text: "AFRIN JAHAN NADIA" },
+            { id: "CE27043", text: "SUBORNA RANI ROY" },
+            { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI" },
             { id: "CE27045", text: "IREENA ASHRAF" },
-            { id: "CE27047", text: "SADIA ISRAT" },
-            { id: "CE27048", text: "KHANDAKAR MEHEDI" },
-            { id: "CE27049", text: "MD.TAIMUL ISLAM" },
-            { id: "CE27050", text: "SHAH MUSHFIQ" },
-            { id: "CE27051", text: "TANZIMA" },
-            { id: "CE27057", text: "TAMANNA" }
+            { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM" },
+            { id: "CE27047", text: "SADIA ISRAT SOBORNA" },
+            { id: "CE27048", text: "KHANDAKAR MEHEDIN" },
+            { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR" },
+            { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN" },
+            { id: "CE27051", text: "TAMANNA ISLAM ANIKA" },
+            { id: "CE27052", text: "IMTIAZ AHMAD EMON" },
+            { id: "CE27053", text: "DIBBO BISWAS" },
+            { id: "CE27054", text: "ARABY WASIN" },
+            { id: "CE27055", text: "ARUNAV BHATTACHARJEE" },
+            { id: "CE27056", text: "RAKIB SHIHAB" },
+            { id: "CE27057", text: "TANZIMA" }
         ];
 
         const menuPanel = document.getElementById('menuPanel');
@@ -522,7 +426,7 @@
 
             // Simple client-side validation (for demo purposes)
             const person = nameData.find(data => data.id === userId);
-            if (person && password === 'password123') { // Replace with actual authentication
+            if (person && password === 'password123') { // Replace with actual authentication logic
                 localStorage.setItem('isAuthenticated', 'true');
                 localStorage.setItem('userId', userId);
                 loginModal.style.display = 'none';
