@@ -65,7 +65,7 @@
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
             border: 2px solid rgba(212, 160, 23, 0.3);
             backdrop-filter: blur(5px);
-            z-index: 1; /* Ensure content stays below menu panel */
+            z-index: 1;
         }
 
         .resource-item {
@@ -118,21 +118,24 @@
             font-size: 2em;
             line-height: 1;
         }
+        .menu-btn.active {
+            display: none;
+        }
 
         .menu-panel {
             position: fixed;
             top: 0;
-            right: -250px; /* Reduced width for less intrusion */
+            right: -250px;
             width: 250px;
             height: 100vh;
-            background: rgba(10, 25, 47, 0.85); /* Increased transparency */
+            background: rgba(10, 25, 47, 0.85);
             box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
             transition: right 0.4s ease-in-out;
             z-index: 1000;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            backdrop-filter: blur(10px); /* Stronger blur for better readability */
+            backdrop-filter: blur(10px);
         }
         .menu-panel.active {
             right: 0;
@@ -177,9 +180,6 @@
         }
         .menu-panel.active .close-btn {
             display: flex;
-        }
-        .menu-btn.active {
-            display: none; /* Hide menu button when panel is active */
         }
 
         .login-modal {
@@ -235,10 +235,10 @@
             transition: all 0.3s ease;
         }
         .login-modal-content button:hover {
-            background: linear-gradient(90deg, #f5c769, #d4a017);
+            background: linear-gradient(45deg, #f5c769, #d4a017);
             transform: translateY(-2px);
         }
-        #modalError {
+        #loginError {
             color: #ff6b6b;
             margin: 10px 0;
             display: none;
@@ -253,7 +253,7 @@
             background: rgba(212, 160, 23, 0.9);
             color: #fff;
             padding: 10px 20px;
-            border-radius: 10px;
+            border-radius: 5px;
             font-size: 1.2em;
             z-index: 1300;
             opacity: 0;
@@ -270,23 +270,23 @@
                 padding: 15px;
             }
             .resource-item {
-                font-size: 1em;
+                font-size: 1.1em;
                 padding: 12px;
             }
             #monogram-container img {
-                max-width: 120px;
+                max-width: 150px;
             }
             h1 {
-                font-size: 2.8em;
+                font-size: 3.5em;
                 letter-spacing: 2px;
             }
             .menu-panel {
-                width: 60vw;
+                width: 250px;
             }
             .menu-btn, .close-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2em;
+                width: 48px;
+                height: 48px;
+                font-size: 1.4em;
             }
         }
 
@@ -297,66 +297,68 @@
                 margin: 20px auto;
             }
             .resource-item {
-                font-size: 0.95em;
+                font-size: 1.1em;
                 padding: 10px;
-                margin: 8px 0;
+                margin: 10px 0;
             }
             #monogram-container img {
-                max-width: 100px;
+                max-width: 150px;
             }
             h1 {
-                font-size: 2.5em;
+                font-size: 3.5em;
                 letter-spacing: 1.5px;
                 margin: 10px 0;
             }
             .menu-panel {
-                width: 80vw;
-                padding: 15px;
-                right: 0; /* Ensure it slides fully */
+                width: 250px;
+                right: -250px; /* Ensure it’s fully hidden */
+            }
+            .menu-panel.active {
+                right: 0;
             }
             .menu-panel a {
-                font-size: 1em;
+                font-size: 1.2em;
                 padding: 10px;
             }
             .menu-btn, .close-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1em;
-                top: 10px;
-                left: 10px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.4em;
+                top: 15px;
+                left: 15px;
             }
             .login-modal-content {
                 width: 85%;
                 padding: 20px;
             }
             .login-modal-content input {
-                font-size: 0.9em;
+                font-size: 1.1em;
                 padding: 10px 15px;
             }
             .login-modal-content button {
-                font-size: 0.9em;
+                font-size: 1em;
                 padding: 8px 15px;
             }
             .welcome-message {
-                font-size: 1em;
+                font-size: 1.2em;
                 padding: 8px 15px;
             }
         }
 
         @media (min-width: 1200px) {
             .resources-container {
-                max-width: 1000px;
-                padding: 30px;
-            }
-            .resource-item {
-                font-size: 1.2em;
+                max-width: 900px;
                 padding: 20px;
             }
+            .resource-item {
+                font-size: 1.1em;
+                padding: 15px;
+            }
             h1 {
-                font-size: 4em;
+                font-size: 3.5em;
             }
             #monogram-container img {
-                max-width: 180px;
+                max-width: 150px;
             }
         }
     </style>
@@ -382,7 +384,7 @@
                 <input type="password" id="modalPassword" placeholder="Enter Password" required>
                 <button type="submit">Login</button>
             </form>
-            <div id="modalError">Invalid ID or Password</div>
+            <div id="loginError">Invalid ID or Password</div>
             <button onclick="closeLoginModal()">Close</button>
         </div>
     </div>
@@ -472,14 +474,16 @@
         const menuPanel = document.getElementById('menuPanel');
         const loginModal = document.getElementById('loginModal');
         const loginForm = document.getElementById('loginForm');
-        const modalError = document.getElementById('modalError');
+        const loginError = document.getElementById('loginError');
         const welcomeMessage = document.getElementById('welcomeMessage');
         const loginLink = document.getElementById('loginLink');
         const logoutLink = document.getElementById('logoutLink');
         const menuBtn = document.querySelector('.menu-btn');
 
-        // Check authentication state on load
+        // Ensure menu panel is hidden on load
         window.onload = function() {
+            menuPanel.classList.remove('active'); // Force menu panel to be hidden
+            menuBtn.classList.remove('active'); // Ensure menu button is visible
             const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
             const userId = localStorage.getItem('userId');
             if (isAuthenticated && userId) {
@@ -496,7 +500,7 @@
         // Toggle menu panel
         function toggleMenu() {
             menuPanel.classList.toggle('active');
-            menuBtn.classList.toggle('active'); // Toggle menu button visibility
+            menuBtn.classList.toggle('active');
         }
 
         // Show login modal
@@ -508,7 +512,7 @@
         // Close login modal
         function closeLoginModal() {
             loginModal.style.display = 'none';
-            modalError.style.display = 'none';
+            loginError.style.display = 'none';
             loginForm.reset();
         }
 
@@ -533,7 +537,7 @@
                 welcomeMessage.classList.add('show');
                 setTimeout(() => welcomeMessage.classList.remove('show'), 3000);
             } else {
-                modalError.style.display = 'block';
+                loginError.style.display = 'block';
             }
         });
 
