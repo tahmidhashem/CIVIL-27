@@ -223,28 +223,28 @@
             transform: scale(1.03);
         }
         .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #d4a017;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 1.4em;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s;
-    z-index: 1100;
-    display: none; /* Hidden by default */
-    align-items: center;
-    justify-content: center;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d4a017;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.4em;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+            z-index: 1100;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
         }
-.close-btn:hover {
-    background: #f5c769;
-    transform: rotate(90deg);
-}
+        .close-btn:hover {
+            background: #f5c769;
+            transform: rotate(90deg);
+        }
         .panel-id, .panel-name, .panel-bloodgroup {
             font-family: 'Quicksand', sans-serif;
             font-size: 1.1em;
@@ -262,40 +262,52 @@
         }
 
         .menu-btn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: #d4a017;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    font-size: 1.4em;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s;
-    z-index: 1100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.menu-btn:hover {
-    background: #f5c769;
-    transform: scale(1.1);
-}
-.menu-btn::before {
-    content: '⋮';
-    font-size: 2em;
-    line-height: 1;
-}
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: #d4a017;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.4em;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-btn:hover {
+            background: #f5c769;
+            transform: scale(1.1);
+        }
+        .menu-btn::before {
+            content: '⋮';
+            font-size: 2em;
+            line-height: 1;
+        }
         /* Ensure close-btn shows and menu-btn hides when side-panel is active */
-.side-panel.active .close-btn {
-    display: flex; /* Show close-btn when side-panel is active */
-}
-.side-panel.active + .menu-btn {
-    display: none; /* Hide menu-btn when side-panel is active */
-}
+        .side-panel.active .close-btn {
+            display: flex; /* Show close-btn when side-panel is active */
+        }
+
+        .menu-btn {
+            display: block; /* Default state for menu-btn */
+        }
+
+        .side-panel.active ~ .menu-btn,
+        .side-panel.active + .menu-btn {
+            display: none; /* Hide menu-btn when side-panel is active, accounting for DOM order */
+        }
+
+        /* Ensure menu-btn reappears when side-panel is not active */
+        .side-panel:not(.active) ~ .menu-btn,
+        .side-panel:not(.active) + .menu-btn {
+            display: flex; /* Show menu-btn when side-panel is inactive */
+        }
 
         .menu-panel {
             position: fixed;
@@ -754,7 +766,7 @@
                 </div>
             </div>
             <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27040">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_ived_720045293734431.jpeg" alt="MD.SAYEED HOSSAIN SHIHAB" loading="lazy">
+                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAYEED HOSSAIN SHIHAB" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27040</span>
                     <span class="name-text">MD.SAYEED HOSSAIN SHIHAB</span>
@@ -891,7 +903,7 @@
             { id: "CE27004", text: "MOUMITA DAS", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27005", text: "RIMJHIM SAHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27006", text: "ANISHA ANOWER", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
-            { id: "CE27007", text: "AKIDA ADNIN", image: "https://raw.githubusercontent.com/tahmihashem/CIVIL-27/main/received_ived_720045293734431.jpeg", bloodgroup: "" },
+            { id: "CE27007", text: "AKIDA ADNIN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27008", text: "JINAT RAHMAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27009", text: "MARIA ISLAM SOHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
             { id: "CE27010", text: "TANMOY DAKUA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "" },
@@ -966,8 +978,8 @@
                 const person = nameData.find(data => data.id === userId);
                 if (person) {
                     loginLink.textContent = `Welcome, ${person.text}`;
-                    loginLink.onclick = null; // Disable login link
-                    loginLink.style.pointerEvents = 'none'; // Prevent interaction
+                    loginLink.onclick = null;
+                    loginLink.style.pointerEvents = 'none';
                 }
             }
         };
@@ -991,6 +1003,13 @@
         function closePanel() {
             sidePanel.classList.remove('active');
         }
+
+        // Ensure menu-btn and close-btn toggle with panel state
+        sidePanel.addEventListener('transitionend', function() {
+            if (!sidePanel.classList.contains('active')) {
+                menuBtn.style.display = 'flex'; // Re-show menu-btn when panel closes
+            }
+        });
 
         // Toggle menu panel
         function toggleMenu() {
