@@ -264,7 +264,7 @@
         .menu-btn {
             position: fixed;
             top: 15px;
-            right: 15px;
+            left: 15px; /* Changed from right to left */
             background: #d4a017;
             border: none;
             border-radius: 50%;
@@ -463,6 +463,7 @@
     <div id="menuPanel" class="menu-panel">
         <a id="resourcesLink" href="resources.html" target="_blank">Resources</a>
         <a id="loginLink" href="#" onclick="showLogin()">Log In</a>
+        <a id="logoutLink" href="#" onclick="logout()" style="display: none;">Log Out</a>
     </div>
 
     <!-- Side Panel -->
@@ -968,6 +969,7 @@
         const modalError = document.getElementById('modalError');
         const welcomeMessage = document.getElementById('welcomeMessage');
         const loginLink = document.getElementById('loginLink');
+        const logoutLink = document.getElementById('logoutLink');
         const resourcesLink = document.getElementById('resourcesLink');
 
         // Check authentication state on load
@@ -977,9 +979,9 @@
             if (isAuthenticated && userId) {
                 const person = nameData.find(data => data.id === userId);
                 if (person) {
+                    loginLink.style.display = 'none';
+                    logoutLink.style.display = 'block';
                     loginLink.textContent = `Welcome, ${person.text}`;
-                    loginLink.onclick = null;
-                    loginLink.style.pointerEvents = 'none';
                 }
             }
         };
@@ -1005,72 +1007,84 @@
         }
 
         // Ensure menu-btn and close-btn toggle with panel state
-        sidePanel.addEventListener('transitionend', function() {
-            if (!sidePanel.classList.contains('active')) {
-                menuBtn.style.display = 'flex'; // Re-show menu-btn when panel closes
-            }
-        });
+sidePanel.addEventListener('transitionend', function() {
+    if (!sidePanel.classList.contains('active')) {
+        menuBtn.style.display = 'flex';
+    }
+});
 
-        // Toggle menu panel
-        function toggleMenu() {
-            menuPanel.classList.toggle('active');
+// Toggle menu panel
+function toggleMenu() {
+    menuPanel.classList.toggle('active');
+}
+
+// Search functionality
+function searchNames() {
+    const searchBar = document.getElementById('searchBar');
+    const filter = searchBar.value.toLowerCase();
+    const names = document.querySelectorAll('.name');
+
+    names.forEach(name => {
+        const nameText = name.querySelector('.name-text').textContent.toLowerCase();
+        const nameId = name.querySelector('.name-id').textContent.toLowerCase();
+        if (nameText.includes(filter) || nameId.includes(filter)) {
+            name.style.display = 'flex';
+        } else {
+            name.style.display = 'none';
         }
+    });
+}
 
-        // Show login modal
-        function showLogin() {
-            loginModal.style.display = 'flex';
-            menuPanel.classList.remove('active');
-        }
+// Show login modal
+function showLogin() {
+    loginModal.style.display = 'flex';
+    menuPanel.classList.remove('active');
+}
 
-        // Close login modal
-        function closeLoginModal() {
-            loginModal.style.display = 'none';
-            modalError.style.display = 'none';
-            loginForm.reset();
-        }
+// Close login modal
+function closeLoginModal() {
+    loginModal.style.display = 'none';
+    modalError.style.display = 'none';
+}
 
-        // Handle login form submission
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const userId = document.getElementById('modalUserId').value.trim().toUpperCase();
-            const password = document.getElementById('modalPassword').value;
+// Handle login
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const userId = document.getElementById('modalUserId').value;
+    const password = document.getElementById('modalPassword').value;
 
-            const person = nameData.find(data => data.id === userId);
-            if (person && password === 'civil27') {
-                localStorage.setItem('isAuthenticated', 'true');
-                localStorage.setItem('userId', userId);
-                loginModal.style.display = 'none';
-                loginLink.textContent = `Welcome, ${person.text}`;
-                loginLink.onclick = null;
-                loginLink.style.pointerEvents = 'none';
-                welcomeMessage.textContent = `Welcome, ${person.text}`;
-                welcomeMessage.classList.add('show');
-                setTimeout(() => {
-                    welcomeMessage.classList.remove('show');
-                }, 3000);
-            } else {
-                modalError.style.display = 'block';
-            }
-        });
+    const person = nameData.find(data => data.id === userId);
+    if (person && password === '123') { // Simple password check for demo
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userId', userId);
+        loginModal.style.display = 'none';
+        loginLink.style.display = 'none';
+        logoutLink.style.display = 'block';
+        loginLink.textContent = `Welcome, ${person.text}`;
+        welcomeMessage.textContent = `Welcome, ${person.text}!`;
+        welcomeMessage.classList.add('show');
+        setTimeout(() => {
+            welcomeMessage.classList.remove('show');
+        }, 3000);
+    } else {
+        modalError.style.display = 'block';
+    }
+});
 
-        // Search names
-        function searchNames() {
-            const searchValue = document.getElementById('searchBar').value.toLowerCase();
-            const names = document.querySelectorAll('.name');
-            names.forEach(name => {
-                const nameText = name.querySelector('.name-text').textContent.toLowerCase();
-                const idText = name.querySelector('.name-id').textContent.toLowerCase();
-                name.parentElement.style.display = (nameText.includes(searchValue) || idText.includes(searchValue)) ? '' : 'none';
-            });
-        }
-
-        // Prevent direct access to resources if not authenticated
-        resourcesLink.addEventListener('click', function(e) {
-            if (!localStorage.getItem('isAuthenticated')) {
-                e.preventDefault();
-                showLogin();
-            }
-        });
-    </script>
+// Handle logout
+function logout() {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userId');
+    loginLink.style.display = 'block';
+    logoutLink.style.display = 'none';
+    loginLink.textContent = 'Log In';
+    welcomeMessage.textContent = 'Logged out successfully!';
+    welcomeMessage.classList.add('show');
+    setTimeout(() => {
+        welcomeMessage.classList.remove('show');
+    }, 3000);
+    menuPanel.classList.remove('active');
+}
+</script>
 </body>
-    </html>
+</html>
