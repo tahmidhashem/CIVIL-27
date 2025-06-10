@@ -66,6 +66,7 @@
             border: 2px solid rgba(212, 160, 23, 0.3);
             backdrop-filter: blur(5px);
             z-index: 1;
+            text-align: center;
         }
 
         .resource-item {
@@ -235,7 +236,7 @@
             transition: all 0.3s ease;
         }
         .login-modal-content button:hover {
-            background: linear-gradient(45deg, #f5c769, #d4a017);
+            background: linear-gradient(90deg, #f5c769, #d4a017);
             transform: translateY(-2px);
         }
         #loginError {
@@ -253,7 +254,7 @@
             background: rgba(212, 160, 23, 0.9);
             color: #fff;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 1.2em;
             z-index: 1300;
             opacity: 0;
@@ -263,102 +264,25 @@
             opacity: 1;
         }
 
-        /* Responsive Design */
+        /* Responsive Design: Minimal adjustments */
         @media (max-width: 900px) {
             .resources-container {
-                max-width: 95vw;
-                padding: 15px;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 12px;
-            }
-            #monogram-container img {
-                max-width: 150px;
-            }
-            h1 {
-                font-size: 3.5em;
-                letter-spacing: 2px;
-            }
-            .menu-panel {
-                width: 250px;
-            }
-            .menu-btn, .close-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4em;
+                max-width: 90vw;
+                padding: 20px;
             }
         }
 
         @media (max-width: 600px) {
             .resources-container {
                 max-width: 90vw;
-                padding: 10px;
-                margin: 20px auto;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 10px;
-                margin: 10px 0;
-            }
-            #monogram-container img {
-                max-width: 150px;
-            }
-            h1 {
-                font-size: 3.5em;
-                letter-spacing: 1.5px;
-                margin: 10px 0;
+                padding: 20px;
+                margin: 30px auto;
             }
             .menu-panel {
-                width: 250px;
-                right: -250px; /* Ensure it’s fully hidden */
+                right: -250px; /* Ensure hidden */
             }
             .menu-panel.active {
                 right: 0;
-            }
-            .menu-panel a {
-                font-size: 1.2em;
-                padding: 10px;
-            }
-            .menu-btn, .close-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 1.4em;
-                top: 15px;
-                left: 15px;
-            }
-            .login-modal-content {
-                width: 85%;
-                padding: 20px;
-            }
-            .login-modal-content input {
-                font-size: 1.1em;
-                padding: 10px 15px;
-            }
-            .login-modal-content button {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-            .welcome-message {
-                font-size: 1.2em;
-                padding: 8px 15px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .resources-container {
-                max-width: 900px;
-                padding: 20px;
-            }
-            .resource-item {
-                font-size: 1.1em;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 3.5em;
-            }
-            #monogram-container img {
-                max-width: 150px;
             }
         }
     </style>
@@ -482,8 +406,8 @@
 
         // Ensure menu panel is hidden on load
         window.onload = function() {
-            menuPanel.classList.remove('active'); // Force menu panel to be hidden
-            menuBtn.classList.remove('active'); // Ensure menu button is visible
+            menuPanel.classList.remove('active');
+            menuBtn.classList.remove('active');
             const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
             const userId = localStorage.getItem('userId');
             if (isAuthenticated && userId) {
@@ -506,7 +430,7 @@
         // Show login modal
         function showLogin() {
             loginModal.style.display = 'flex';
-            toggleMenu(); // Close menu panel when login is clicked
+            toggleMenu();
         }
 
         // Close login modal
@@ -522,9 +446,9 @@
             const userId = document.getElementById('modalUserId').value.trim();
             const password = document.getElementById('modalPassword').value.trim();
 
-            // Simple client-side validation (for demo purposes)
+            // Validate with password 'civil27'
             const person = nameData.find(data => data.id === userId);
-            if (person && password === 'password123') { // Replace with actual authentication logic
+            if (person && password === 'civil27') {
                 localStorage.setItem('isAuthenticated', 'true');
                 localStorage.setItem('userId', userId);
                 loginModal.style.display = 'none';
@@ -552,7 +476,7 @@
             welcomeMessage.textContent = 'Logged out successfully!';
             welcomeMessage.classList.add('show');
             setTimeout(() => welcomeMessage.classList.remove('show'), 3000);
-            toggleMenu(); // Close menu panel after logout
+            toggleMenu();
         }
     </script>
 </body>
