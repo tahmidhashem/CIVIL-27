@@ -237,10 +237,10 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
     transition: all 0.3s;
     z-index: 1100;
-    display: none; /* Default: hidden when side-panel is not active */
+    display: none; /* Hidden by default */
     align-items: center;
     justify-content: center;
-}
+        }
 .close-btn:hover {
     background: #f5c769;
     transform: rotate(90deg);
@@ -289,7 +289,7 @@
     font-size: 2em;
     line-height: 1;
 }
-        /* Show close-btn and hide menu-btn when side-panel is active */
+        /* Ensure close-btn shows and menu-btn hides when side-panel is active */
 .side-panel.active .close-btn {
     display: flex; /* Show close-btn when side-panel is active */
 }
