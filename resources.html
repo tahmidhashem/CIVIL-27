@@ -65,6 +65,7 @@
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
             border: 2px solid rgba(212, 160, 23, 0.3);
             backdrop-filter: blur(5px);
+            z-index: 1; /* Ensure content stays below menu panel */
         }
 
         .resource-item {
@@ -121,17 +122,17 @@
         .menu-panel {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 300px;
+            right: -250px; /* Reduced width for less intrusion */
+            width: 250px;
             height: 100vh;
-            background: rgba(10, 25, 47, 0.95);
+            background: rgba(10, 25, 47, 0.85); /* Increased transparency */
             box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
             transition: right 0.4s ease-in-out;
             z-index: 1000;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px); /* Stronger blur for better readability */
         }
         .menu-panel.active {
             right: 0;
@@ -177,8 +178,8 @@
         .menu-panel.active .close-btn {
             display: flex;
         }
-        .menu-panel.active ~ .menu-btn {
-            display: none;
+        .menu-btn.active {
+            display: none; /* Hide menu button when panel is active */
         }
 
         .login-modal {
@@ -280,7 +281,7 @@
                 letter-spacing: 2px;
             }
             .menu-panel {
-                width: 70vw;
+                width: 60vw;
             }
             .menu-btn, .close-btn {
                 width: 40px;
@@ -296,32 +297,33 @@
                 margin: 20px auto;
             }
             .resource-item {
-                font-size: 0.9em;
+                font-size: 0.95em;
                 padding: 10px;
-                margin: 10px 0;
+                margin: 8px 0;
             }
             #monogram-container img {
                 max-width: 100px;
             }
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
                 letter-spacing: 1.5px;
                 margin: 10px 0;
             }
             .menu-panel {
-                width: 100vw;
+                width: 80vw;
                 padding: 15px;
+                right: 0; /* Ensure it slides fully */
             }
             .menu-panel a {
                 font-size: 1em;
                 padding: 10px;
             }
             .menu-btn, .close-btn {
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
                 font-size: 1.1em;
                 top: 10px;
-                left: 10px; /* Keep menu-btn in top-left */
+                left: 10px;
             }
             .login-modal-content {
                 width: 85%;
@@ -368,7 +370,7 @@
     <button class="menu-btn" onclick="toggleMenu()"></button>
     <div id="menuPanel" class="menu-panel">
         <button class="close-btn" onclick="toggleMenu()">×</button>
-        <a id="homeLink" href="index.html" target="_blank">Home</a>
+        <a id="homeLink" href="index.html">Home</a>
         <a id="loginLink" href="#" onclick="showLogin()">Log In</a>
         <a id="logoutLink" href="#" onclick="logout()" style="display: none;">Log Out</a>
     </div>
@@ -406,7 +408,7 @@
     </div>
 
     <script>
-        // Name data for authentication (same as index.html)
+        // Name data for authentication
         const nameData = [
             { id: "CE27001", text: "SANIA MIRZA" },
             { id: "CE27002", text: "MD.TURJAUN KHAN TURJO" },
@@ -450,14 +452,21 @@
             { id: "CE27040", text: "MD.SAYEED HOSSAIN SHIHAB" },
             { id: "CE27041", text: "MD.TOQI TAHMID RAYAT" },
             { id: "CE27042", text: "AFRIN JAHAN NADIA" },
-            { id: "CE27043", text: "SADIA ISRAT SOBORNA },
-            { id: "CE27047", text: "SUBORNA RANI ROY" },
+            { id: "CE27043", text: "SUBORNA RANI ROY" },
+            { id: "CE27044", text: "MD.ZAKIUL ISLAM AL JAMI" },
+            { id: "CE27045", text: "IREENA ASHRAF" },
+            { id: "CE27046", text: "MD.RUBAYET HOSSAIN RIHAM" },
+            { id: "CE27047", text: "SADIA ISRAT SOBORNA" },
             { id: "CE27048", text: "KHANDAKAR MEHEDIN" },
             { id: "CE27049", text: "MD.TAIMUL ISLAM TANVIR" },
-            { id: "CE27050", text: "SHAH MUSHFIQ" },
-            { id: "CE27051", text: "TANZIMA" },
-            { id: "CE27057", text: "TAMANNA" }
-            // Add more IDs as needed
+            { id: "CE27050", text: "SHAH MUSHFIQUR RAHMAN" },
+            { id: "CE27051", text: "TAMANNA ISLAM ANIKA" },
+            { id: "CE27052", text: "IMTIAZ AHMAD EMON" },
+            { id: "CE27053", text: "DIBBO BISWAS" },
+            { id: "CE27054", text: "ARABY WASIN" },
+            { id: "CE27055", text: "ARUNAV BHATTACHARJEE" },
+            { id: "CE27056", text: "RAKIB SHIHAB" },
+            { id: "CE27057", text: "TANZIMA" }
         ];
 
         const menuPanel = document.getElementById('menuPanel');
@@ -467,6 +476,7 @@
         const welcomeMessage = document.getElementById('welcomeMessage');
         const loginLink = document.getElementById('loginLink');
         const logoutLink = document.getElementById('logoutLink');
+        const menuBtn = document.querySelector('.menu-btn');
 
         // Check authentication state on load
         window.onload = function() {
@@ -486,11 +496,13 @@
         // Toggle menu panel
         function toggleMenu() {
             menuPanel.classList.toggle('active');
+            menuBtn.classList.toggle('active'); // Toggle menu button visibility
         }
 
         // Show login modal
         function showLogin() {
             loginModal.style.display = 'flex';
+            toggleMenu(); // Close menu panel when login is clicked
         }
 
         // Close login modal
@@ -536,7 +548,7 @@
             welcomeMessage.textContent = 'Logged out successfully!';
             welcomeMessage.classList.add('show');
             setTimeout(() => welcomeMessage.classList.remove('show'), 3000);
-            toggleMenu();
+            toggleMenu(); // Close menu panel after logout
         }
     </script>
 </body>
