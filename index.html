@@ -289,24 +289,9 @@
             font-size: 2em;
             line-height: 1;
         }
-        /* Ensure close-btn shows and menu-btn hides when side-panel is active */
+        /* Ensure close-btn shows when side-panel is active */
         .side-panel.active .close-btn {
             display: flex; /* Show close-btn when side-panel is active */
-        }
-
-        .menu-btn {
-            display: block; /* Default state for menu-btn */
-        }
-
-        .side-panel.active ~ .menu-btn,
-        .side-panel.active + .menu-btn {
-            display: none; /* Hide menu-btn when side-panel is active, accounting for DOM order */
-        }
-
-        /* Ensure menu-btn reappears when side-panel is not active */
-        .side-panel:not(.active) ~ .menu-btn,
-        .side-panel:not(.active) + .menu-btn {
-            display: flex; /* Show menu-btn when side-panel is inactive */
         }
 
         .menu-panel {
@@ -744,7 +729,7 @@
                     <span class="name-text">MST.TASFIA FAIRUS</span>
                 </div>
             </div>
-            <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-_27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27037">
+            <div class="name" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available" data-id="CE27037">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ISHRAT JAHAN RAISA" loading="lazy">
                 <div class="name-content">
                     <span class="name-id">CE27037</span>
@@ -984,7 +969,7 @@
             }
         };
 
-        // Open side panel
+        // Open side panel and hide menu button
         document.querySelectorAll('.name').forEach(name => {
             name.addEventListener('click', function() {
                 const id = this.getAttribute('data-id');
@@ -995,21 +980,16 @@
                     panelBloodGroup.textContent = `Blood Group: ${person.bloodgroup || 'Not Available'}`;
                     panelImage.src = person.image;
                     sidePanel.classList.add('active');
+                    menuBtn.style.display = 'none'; // Hide menu button when side panel opens
                 }
             });
         });
 
-        // Close side panel
+        // Close side panel and show menu button
         function closePanel() {
             sidePanel.classList.remove('active');
+            menuBtn.style.display = 'flex'; // Show menu button when side panel closes
         }
-
-        // Ensure menu-btn and close-btn toggle with panel state
-        sidePanel.addEventListener('transitionend', function() {
-            if (!sidePanel.classList.contains('active')) {
-                menuBtn.style.display = 'flex'; // Re-show menu-btn when panel closes
-            }
-        });
 
         // Toggle menu panel
         function toggleMenu() {
