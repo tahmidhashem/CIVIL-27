@@ -12,74 +12,77 @@
             font-family: Arial, sans-serif;
         }
         body {
-            background: #f0f0f0;
+            background-color: #f0f2f5;
         }
-        .menu-btn {
+        .three-dot {
             position: fixed;
-            top: 15px;
-            left: 15px;
-            background: #d4a017;
+            top: 10px;
+            left: 10px;
+            background-color: #d4a017;
             border: none;
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            font-size: 1.4em;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2em;
             color: #fff;
             cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             transition: all 0.3s;
-            z-index: 1100;
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .menu-panel {
+        .three-dot:hover {
+            background-color: #b88c14;
+        }
+        .panel {
             position: fixed;
             top: 0;
-            left: -250px;
-            width: 250px;
+            left: -200px;
+            width: 200px;
             height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
             transition: left 0.3s;
-            z-index: 1000;
+            z-index: 999;
             padding: 20px;
         }
-        .menu-panel.active {
+        .panel.active {
             left: 0;
         }
-        .menu-panel a {
+        .panel a {
             display: block;
             padding: 10px;
             margin: 5px 0;
             text-decoration: none;
             color: #333;
-            font-size: 1.1em;
+            font-size: 1em;
         }
-        .menu-panel a:hover {
-            background: #f0f0f0;
+        .panel a:hover {
+            background-color: #f0f2f5;
             border-radius: 5px;
         }
         .search-container {
             display: flex;
             justify-content: center;
             padding: 20px;
-            margin-top: 70px;
+            margin-top: 60px;
         }
         #searchBar {
-            width: 70%;
-            max-width: 500px;
-            padding: 10px;
+            width: 60%;
+            max-width: 400px;
+            padding: 8px;
             border: 1px solid #ccc;
-            border-radius: 5px 0 0 5px;
+            border-radius: 4px 0 0 4px;
             font-size: 1em;
         }
         #searchButton {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: 1px solid #ccc;
             border-left: none;
-            border-radius: 0 5px 5px 0;
-            background: #d4a017;
+            border-radius: 0 4px 4px 0;
+            background-color: #d4a017;
             color: #fff;
             cursor: pointer;
             font-size: 1em;
@@ -91,17 +94,17 @@
         }
         .name-box {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
         }
         .name {
             display: flex;
             align-items: center;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding: 10px;
             cursor: pointer;
             transition: transform 0.2s;
@@ -110,35 +113,31 @@
             transform: scale(1.02);
         }
         .name img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             margin-right: 10px;
         }
-        .name-content {
-            display: flex;
-            flex-direction: column;
-        }
         .name-id {
-            font-size: 0.9em;
-            color: #555;
+            font-size: 0.8em;
+            color: #666;
         }
         .name-text {
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: bold;
             color: #333;
         }
         .side-panel {
             position: fixed;
             top: 0;
-            right: -350px;
-            width: 350px;
+            right: -300px;
+            width: 300px;
             height: 100%;
-            background: #fff;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
             transition: right 0.3s;
-            z-index: 1000;
+            z-index: 999;
             padding: 20px;
         }
         .side-panel.active {
@@ -155,35 +154,35 @@
         }
         .panel-content img {
             width: 100%;
-            max-width: 200px;
-            border-radius: 10px;
+            max-width: 150px;
+            border-radius: 8px;
             margin: 20px 0;
         }
         .panel-content p {
             margin: 10px 0;
-            font-size: 1.1em;
+            font-size: 1em;
         }
-        .login-modal {
+        .login-box {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1200;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
         }
         .login-content {
             background: #fff;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 8px;
             width: 90%;
-            max-width: 400px;
+            max-width: 350px;
             position: relative;
         }
-        .close-modal {
+        .close-login {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -198,18 +197,18 @@
         }
         .login-content input {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
             font-size: 1em;
         }
         .login-content button {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background: #d4a017;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             color: #fff;
             font-size: 1em;
             cursor: pointer;
@@ -228,8 +227,8 @@
             background: #d4a017;
             color: #fff;
             padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1300;
+            border-radius: 4px;
+            z-index: 1000;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -239,8 +238,8 @@
     </style>
 </head>
 <body>
-    <button class="menu-btn">&#9776;</button>
-    <div class="menu-panel" id="menuPanel">
+    <button class="three-dot">☰</button>
+    <div class="panel" id="menuPanel">
         <a href="index.html">Home</a>
         <a href="#" id="loginLink">Login</a>
         <a href="resources.html" id="resourcesLink">Resources</a>
@@ -253,407 +252,407 @@
         <div class="name-box">
             <div class="name" data-id="CE27001" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SANIA MIRZA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27001</span>
-                    <span class="name-text">SANIA MIRZA</span>
+                <div>
+                    <div class="name-id">CE27001</div>
+                    <div class="name-text">SANIA MIRZA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27002" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TURJAUN KHAN TURJO" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27002</span>
-                    <span class="name-text">MD.TURJAUN KHAN TURJO</span>
+                <div>
+                    <div class="name-id">CE27002</div>
+                    <div class="name-text">MD.TURJAUN TURSHAN</div>
                 </div>
             </div>
-            <div class="name" data-id="CE27003" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAIM KHAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27003</span>
-                    <span class="name-text">MD.SAIM KHAN</span>
+            <div class="name" data-id="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/data/CE27003" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
+                <img src=" https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAIM KHAN" loading="lazy">
+                <div>
+                    <div class="name-id">CE27003</div>
+                    <div class="name-text">MD.SAIM KHAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27004" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MOUMITA DAS" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27004</span>
-                    <span class="name-text">MOUMITA DAS</span>
+                <div>
+                    <div class="name-id">CE27004</div>
+                    <div class="name-text">MOUMITA DAS</div>
                 </div>
             </div>
             <div class="name" data-id="CE27005" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RIMJHIM SAHA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27005</span>
-                    <span class="name-text">RIMJHIM SAHA</span>
+                <div>
+                    <div class="name-id">CE27005</div>
+                    <div class="name-text">RIMJHIM SAHA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27006" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ANISHA ANOWER" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27006</span>
-                    <span class="name-text">ANISHA ANOWER</span>
+                <div>
+                    <div class="name-id">CE27006</div>
+                    <div class="name-text">ANISHA ANOWER</div>
                 </div>
             </div>
             <div class="name" data-id="CE27007" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="AKIDA ADNIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27007</span>
-                    <span class="name-text">AKIDA ADNIN</span>
+                <div>
+                    <div class="name-id">CE27007</div>
+                    <div class="name-text">AKIDA ADNIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27008" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="JINAT RAHMAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27008</span>
-                    <span class="name-text">JINAT RAHMAN</span>
+                <div>
+                    <div class="name-id">CE27008</div>
+                    <div class="name-text">JINAT RAHMAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27009" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MARIA ISLAM SOHA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27009</span>
-                    <span class="name-text">MARIA ISLAM SOHA</span>
+                <div>
+                    <div class="name-id">CE27009</div>
+                    <div class="name-text">MARIA ISLAM SOHA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27010" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANMOY DAKUA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27010</span>
-                    <span class="name-text">TANMOY DAKUA</span>
+                <div>
+                    <div class="name-id">CE27010</div>
+                    <div class="name-text">TANMOY DAKUA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27011" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="FARNAZ RAHMAN MALIHA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27011</span>
-                    <span class="name-text">FARNAZ RAHMAN MALIHA</span>
+                <div>
+                    <div class="name-id">CE27011</div>
+                    <div class="name-text">FARNAZ RAHMAN MALIHA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27012" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ADIB MASRUR KHAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27012</span>
-                    <span class="name-text">ADIB MASRUR KHAN</span>
+                <div>
+                    <div class="name-id">CE27012</div>
+                    <div class="name-text">ADIB MASRUR KHAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27013" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAH AHMED RUPAM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27013</span>
-                    <span class="name-text">SHAH AHMED RUPAM</span>
+                <div>
+                    <div class="name-id">CE27013</div>
+                    <div class="name-text">SHAH AHMED RUPAM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27014" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="LABEED LOHANI KHAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27014</span>
-                    <span class="name-text">LABEED LOHANI KHAN</span>
+                <div>
+                    <div class="name-id">CE27014</div>
+                    <div class="name-text">LABEED LOHANI KHAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27015" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ABDULLAH AL FAHAT BHUIYA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27015</span>
-                    <span class="name-text">ABDULLAH AL FAHAT BHUIYA</span>
+                <div>
+                    <div class="name-id">CE27015</div>
+                    <div class="name-text">ABDULLAH AL FAHAT BHUIYA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27016" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MANTASHA MURSHID" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27016</span>
-                    <span class="name-text">MANTASHA MURSHID</span>
+                <div>
+                    <div class="name-id">CE27016</div>
+                    <div class="name-text">MANTASHA MURSHID</div>
                 </div>
             </div>
             <div class="name" data-id="CE27017" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TASFIA TABASSUM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27017</span>
-                    <span class="name-text">TASFIA TABASSUM</span>
+                <div>
+                    <div class="name-id">CE27017</div>
+                    <div class="name-text">TASFIA TABASSUM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27018" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="NAZIFA ZAMAL DIYA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27018</span>
-                    <span class="name-text">NAZIFA ZAMAL DIYA</span>
+                <div>
+                    <div class="name-id">CE27018</div>
+                    <div class="name-text">NAZIFA ZAMAL DIYA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27019" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ASHFAK ZAMAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27019</span>
-                    <span class="name-text">ASHFAK ZAMAN</span>
+                <div>
+                    <div class="name-id">CE27019</div>
+                    <div class="name-text">ASHFAK ZAMAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27020" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" data-bloodgroup="A+">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/20240402_125927.jpg" alt="TAHMID IBNE HASHEM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27020</span>
-                    <span class="name-text">TAHMID IBNE HASHEM</span>
+                <div>
+                    <div class="name-id">CE27020</div>
+                    <div class="name-text">TAHMID IBNE HASHEM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27021" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.MUFIDUL ISLAM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27021</span>
-                    <span class="name-text">MD.MUFIDUL ISLAM</span>
+                <div>
+                    <div class="name-id">CE27021</div>
+                    <div class="name-text">MD.MUFIDUL ISLAM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27022" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MARUFA ISLAM SUCHONA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27022</span>
-                    <span class="name-text">MARUFA ISLAM SUCHONA</span>
+                <div>
+                    <div class="name-id">CE27022</div>
+                    <div class="name-text">MARUFA ISLAM SUCHONA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27023" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAKIB AL HASAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27023</span>
-                    <span class="name-text">SHAKIB AL HASAN</span>
+                <div>
+                    <div class="name-id">CE27023</div>
+                    <div class="name-text">SHAKIB AL HASAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27024" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SABBIR UDDIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27024</span>
-                    <span class="name-text">MD.SABBIR UDDIN</span>
+                <div>
+                    <div class="name-id">CE27024</div>
+                    <div class="name-text">MD.SABBIR UDDIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27025" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MAHDI FAIYAZ FARAZI" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27025</span>
-                    <span class="name-text">MAHDI FAIYAZ FARAZI</span>
+                <div>
+                    <div class="name-id">CE27025</div>
+                    <div class="name-text">MAHDI FAIYAZ FARAZI</div>
                 </div>
             </div>
             <div class="name" data-id="CE27026" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ALIF HOSSAIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27026</span>
-                    <span class="name-text">MD.ALIF HOSSAIN</span>
+                <div>
+                    <div class="name-id">CE27026</div>
+                    <div class="name-text">MD.ALIF HOSSAIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27027" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="K.M ZAHINUR" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27027</span>
-                    <span class="name-text">K.M ZAHINUR</span>
+                <div>
+                    <div class="name-id">CE27027</div>
+                    <div class="name-text">K.M ZAHINUR</div>
                 </div>
             </div>
             <div class="name" data-id="CE27028" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="HASNAIN AHMED SOUMIC" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27028</span>
-                    <span class="name-text">HASNAIN AHMED SOUMIC</span>
+                <div>
+                    <div class="name-id">CE27028</div>
+                    <div class="name-text">HASNAIN AHMED SOUMIC</div>
                 </div>
             </div>
             <div class="name" data-id="CE27029" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="FAHMID HOSSAIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27029</span>
-                    <span class="name-text">FAHMID HOSSAIN</span>
+                <div>
+                    <div class="name-id">CE27029</div>
+                    <div class="name-text">FAHMID HOSSAIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27030" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RAMISHA JOHRA ISHRA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27030</span>
-                    <span class="name-text">RAMISHA JOHRA ISHRA</span>
+                <div>
+                    <div class="name-id">CE27030</div>
+                    <div class="name-text">RAMISHA JOHRA ISHRA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27031" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZEHAD RIAM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27031</span>
-                    <span class="name-text">MD.ZEHAD RIAM</span>
+                <div>
+                    <div class="name-id">CE27031</div>
+                    <div class="name-text">MD.ZEHAD RIAM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27032" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAIDUL ISLAM GIAM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27032</span>
-                    <span class="name-text">MD.SAIDUL ISLAM GIAM</span>
+                <div>
+                    <div class="name-id">CE27032</div>
+                    <div class="name-text">MD.SAIDUL ISLAM GIAM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27033" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="NAFIS MAHMUD" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27033</span>
-                    <span class="name-text">NAFIS MAHMUD</span>
+                <div>
+                    <div class="name-id">CE27033</div>
+                    <div class="name-text">NAFIS MAHMUD</div>
                 </div>
             </div>
             <div class="name" data-id="CE27034" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.EMAD UDDIN EMU" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27034</span>
-                    <span class="name-text">MD.EMAD UDDIN EMU</span>
+                <div>
+                    <div class="name-id">CE27034</div>
+                    <div class="name-text">MD.EMAD UDDIN EMU</div>
                 </div>
             </div>
             <div class="name" data-id="CE27035" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TAKBIR HOSSAIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27035</span>
-                    <span class="name-text">MD.TAKBIR HOSSAIN</span>
+                <div>
+                    <div class="name-id">CE27035</div>
+                    <div class="name-text">MD.TAKBIR HOSSAIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27036" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MST.TASFIA FAIRUS" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27036</span>
-                    <span class="name-text">MST.TASFIA FAIRUS</span>
+                <div>
+                    <div class="name-id">CE27036</div>
+                    <div class="name-text">MST.TASFIA FAIRUS</div>
                 </div>
             </div>
             <div class="name" data-id="CE27037" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ISHRAT JAHAN RAISA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27037</span>
-                    <span class="name-text">ISHRAT JAHAN RAISA</span>
+                <div>
+                    <div class="name-id">CE27037</div>
+                    <div class="name-text">ISHRAT JAHAN RAISA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27038" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ASHRAFUL ISLAM SOHAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27038</span>
-                    <span class="name-text">MD.ASHRAFUL ISLAM SOHAN</span>
+                <div>
+                    <div class="name-id">CE27038</div>
+                    <div class="name-text">MD.ASHRAFUL ISLAM SOHAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27039" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.RIADUZZAMAN MOLLA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27039</span>
-                    <span class="name-text">MD.RIADUZZAMAN MOLLA</span>
+                <div>
+                    <div class="name-id">CE27039</div>
+                    <div class="name-text">MD.RIADUZZAMAN MOLLA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27040" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.SAYEED HOSSAIN SHIHAB" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27040</span>
-                    <span class="name-text">MD.SAYEED HOSSAIN SHIHAB</span>
+                <div>
+                    <div class="name-id">CE27040</div>
+                    <div class="name-text">MD.SAYEED HOSSAIN SHIHAB</div>
                 </div>
             </div>
             <div class="name" data-id="CE27041" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TOQI TAHMID RAYAT" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27041</span>
-                    <span class="name-text">MD.TOQI TAHMID RAYAT</span>
+                <div>
+                    <div class="name-id">CE27041</div>
+                    <div class="name-text">MD.TOQI TAHMID RAYAT</div>
                 </div>
             </div>
             <div class="name" data-id="CE27042" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="AFRIN JAHAN NADIA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27042</span>
-                    <span class="name-text">AFRIN JAHAN NADIA</span>
+                <div>
+                    <div class="name-id">CE27042</div>
+                    <div class="name-text">AFRIN JAHAN NADIA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27043" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SUBORNA RANI ROY" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27043</span>
-                    <span class="name-text">SUBORNA RANI ROY</span>
+                <div>
+                    <div class="name-id">CE27043</div>
+                    <div class="name-text">SUBORNA RANI ROY</div>
                 </div>
             </div>
             <div class="name" data-id="CE27044" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.ZAKIUL ISLAM AL JAMI" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27044</span>
-                    <span class="name-text">MD.ZAKIUL ISLAM AL JAMI</span>
+                <div>
+                    <div class="name-id">CE27044</div>
+                    <div class="name-text">MD.ZAKIUL ISLAM AL JAMI</div>
                 </div>
             </div>
             <div class="name" data-id="CE27045" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="IREENA ASHRAF" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27045</span>
-                    <span class="name-text">IREENA ASHRAF</span>
+                <div>
+                    <div class="name-id">CE27045</div>
+                    <div class="name-text">IREENA ASHRAF</div>
                 </div>
             </div>
             <div class="name" data-id="CE27046" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.RUBAYET HOSSAIN RIHAM" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27046</span>
-                    <span class="name-text">MD.RUBAYET HOSSAIN RIHAM</span>
+                <div>
+                    <div class="name-id">CE27046</div>
+                    <div class="name-text">MD.RUBAYET HOSSAIN RIHAM</div>
                 </div>
             </div>
             <div class="name" data-id="CE27047" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SADIA ISRAT SOBORNA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27047</span>
-                    <span class="name-text">SADIA ISRAT SOBORNA</span>
+                <div>
+                    <div class="name-id">CE27047</div>
+                    <div class="name-text">SADIA ISRAT SOBORNA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27048" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="KHANDAKAR MEHEDIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27048</span>
-                    <span class="name-text">KHANDAKAR MEHEDIN</span>
+                <div>
+                    <div class="name-id">CE27048</div>
+                    <div class="name-text">KHANDAKAR MEHEDIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27049" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="MD.TAIMUL ISLAM TANVIR" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27049</span>
-                    <span class="name-text">MD.TAIMUL ISLAM TANVIR</span>
+                <div>
+                    <div class="name-id">CE27049</div>
+                    <div class="name-text">MD.TAIMUL ISLAM TANVIR</div>
                 </div>
             </div>
             <div class="name" data-id="CE27050" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="SHAH MUSHFIQUR RAHMAN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27050</span>
-                    <span class="name-text">SHAH MUSHFIQUR RAHMAN</span>
+                <div>
+                    <div class="name-id">CE27050</div>
+                    <div class="name-text">SHAH MUSHFIQUR RAHMAN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27051" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TAMANNA ISLAM ANIKA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27051</span>
-                    <span class="name-text">TAMANNA ISLAM ANIKA</span>
+                <div>
+                    <div class="name-id">CE27051</div>
+                    <div class="name-text">TAMANNA ISLAM ANIKA</div>
                 </div>
             </div>
             <div class="name" data-id="CE27052" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="IMTIAZ AHMAD EMON" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27052</span>
-                    <span class="name-text">IMTIAZ AHMAD EMON</span>
+                <div>
+                    <div class="name-id">CE27052</div>
+                    <div class="name-text">IMTIAZ AHMAD EMON</div>
                 </div>
             </div>
             <div class="name" data-id="CE27053" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="DIBBO BISWAS" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27053</span>
-                    <span class="name-text">DIBBO BISWAS</span>
+                <div>
+                    <div class="name-id">CE27053</div>
+                    <div class="name-text">DIBBO BISWAS</div>
                 </div>
             </div>
             <div class="name" data-id="CE27054" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ARABY WASIN" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27054</span>
-                    <span class="name-text">ARABY WASIN</span>
+                <div>
+                    <div class="name-id">CE27054</div>
+                    <div class="name-text">ARABY WASIN</div>
                 </div>
             </div>
             <div class="name" data-id="CE27055" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="ARUNAV BHATTACHARJEE" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27055</span>
-                    <span class="name-text">ARUNAV BHATTACHARJEE</span>
+                <div>
+                    <div class="name-id">CE27055</div>
+                    <div class="name-text">ARUNAV BHATTACHARJEE</div>
                 </div>
             </div>
             <div class="name" data-id="CE27056" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
                 <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="RAKIB SHIHAB" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27056</span>
-                    <span class="name-text">RAKIB SHIHAB</span>
+                <div>
+                    <div class="name-id">CE27056</div>
+                    <div class="name-text">RAKIB SHIHAB</div>
                 </div>
             </div>
             <div class="name" data-id="CE27057" data-image="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" data-bloodgroup="Not Available">
-                <img src="https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANZIMA" loading="lazy">
-                <div class="name-content">
-                    <span class="name-id">CE27057</span>
-                    <span class="name-text">TANZIMA</span>
+                <img src="https село://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg" alt="TANZIMA" loading="lazy">
+                <div>
+                    <div class="name-id">CE27057</div>
+                    <div class="name-text">TANZIMA</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="side-panel" id="sidePanel">
-        <button class="close-btn" onclick="closePanel()">&times;</button>
+        <button class="close-btn" onclick="closePanel()">×</button>
         <div class="panel-content">
             <p id="panelId">ID: </p>
             <p id="panelName">Name: </p>
@@ -661,9 +660,9 @@
             <img id="panelImage" src="" alt="Profile Image">
         </div>
     </div>
-    <div class="login-modal" id="loginModal">
+    <div class="login-box" id="loginModal">
         <div class="login-content">
-            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+            <button class="close-login" onclick="closeLogin()">×</button>
             <h2>Login</h2>
             <form id="loginForm">
                 <input type="text" id="modalUserId" placeholder="User ID (e.g., CE27001)" required>
@@ -688,7 +687,7 @@
             { id: "CE27010", text: "TANMOY DAKUA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
             { id: "CE27011", text: "FARNAZ RAHMAN MALIHA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
             { id: "CE27012", text: "ADIB MASRUR KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
-            { id: "CE27013", text: "SHAH AHMED RUPAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
+            { id: "CE27013", text: "SHAH AHMED RUPAM", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27 Gyavailable", bloodgroup: "Not Available" },
             { id: "CE27014", text: "LABEED LOHANI KHAN", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
             { id: "CE27015", text: "ABDULLAH AL FAHAT BHUIYA", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
             { id: "CE27016", text: "MANTASHA MURSHID", image: "https://raw.githubusercontent.com/tahmidhashem/CIVIL-27/main/received_720045293734431.jpeg", bloodgroup: "Not Available" },
@@ -740,7 +739,7 @@
         const panelBloodGroup = document.getElementById('panelBloodGroup');
         const panelImage = document.getElementById('panelImage');
         const menuPanel = document.getElementById('menuPanel');
-        const menuBtn = document.querySelector('.menu-btn');
+        const threeDotButton = document.querySelector('.three-dot');
         const loginModal = document.getElementById('loginModal');
         const loginForm = document.getElementById('loginForm');
         const modalError = document.getElementById('modalError');
@@ -756,35 +755,35 @@
             localStorage.removeItem('isAuthenticated');
             localStorage.removeItem('userId');
             loginLink.textContent = 'Login';
-            loginLink.onclick = showLoginModal;
-            loginLink.style.pointerEvents = 'auto';
+            loginLink.onclick = showLogin;
+            loginLink.style.pointerEvents = true;
             welcomeMessage.textContent = 'You have logged out';
             welcomeMessage.classList.add('show');
             setTimeout(() => {
                 welcomeMessage.classList.remove('show');
             }, 3000);
             menuPanel.classList.remove('active');
-            menuBtn.style.display = 'flex';
+            threeDotButton.style.display = 'flex';
         }
 
-        function showLoginModal() {
-            loginModal.style.display = 'flex';
+        function showLogin() {
+            loginModal.style.display = 'block';
             modalError.style.display = 'none';
             loginForm.reset();
             menuPanel.classList.remove('active');
-            menuBtn.style.display = 'flex';
+            threeDotButton.style.display = 'flex';
         }
 
-        function closeLoginModal() {
+        function closeLogin() {
             loginModal.style.display = 'none';
         }
 
         function toggleMenu() {
             menuPanel.classList.toggle('active');
             if (menuPanel.classList.contains('active')) {
-                menuBtn.style.display = 'none';
+                threeDotButton.style.display = 'none';
             } else {
-                menuBtn.style.display = 'flex';
+                threeDotButton.style.display = 'flex';
             }
         }
 
@@ -794,7 +793,7 @@
 
         document.querySelectorAll('.name').forEach(name => {
             name.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
+                var id = this.getAttribute('data-id');
                 const image = this.getAttribute('data-image');
                 const bloodgroup = this.getAttribute('data-bloodgroup');
                 const person = nameData.find(data => data.id === id);
@@ -836,7 +835,7 @@
                     welcomeMessage.classList.remove('show');
                 }, 3000);
                 menuPanel.classList.remove('active');
-                menuBtn.style.display = 'flex';
+                threeDotButton.style.display = 'flex';
             } else {
                 modalError.style.display = 'block';
             }
@@ -861,7 +860,7 @@
         }
 
         const searchBar = document.getElementById('searchBar');
-        if (searchBar') {
+        if (searchBar) {
             searchBar.addEventListener('input', searchNames);
         } else {
             console.error('Search bar with ID "searchBar" not found.');
@@ -870,14 +869,14 @@
         resourcesLink.addEventListener('click', function(e) {
             if (!localStorage.getItem('isAuthenticated')) {
                 e.preventDefault();
-                showLoginModal();
+                showLogin();
                 menuPanel.classList.remove('active');
-                menuBtn.style.display = 'flex';
+                threeDotButton.style.display = 'flex';
             }
         });
 
-        menuBtn.addEventListener('click', toggleMenu);
-        loginLink.addEventListener('click', showLoginModal);
+        threeDotButton.addEventListener('click', toggleMenu);
+        loginLink.addEventListener('click', showLogin);
     </script>
 </body>
 </html>
